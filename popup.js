@@ -1,4 +1,4 @@
-let time = 10;
+let time = 1500;
 const timerElement = document.querySelector("#timer");
 let timeToWork = true;
 let workInterval;
@@ -19,7 +19,7 @@ const decreaseTime = () => {
   if (time < 0) {
     clearInterval(workInterval);
     timeToWork = !timeToWork; // Alterner entre travail et pause
-    time = timeToWork ? 10 : 5; // Repasser à 10 secondes ou 5 secondes
+    time = timeToWork ? 1500 : 300; // Repasser à 10 secondes ou 5 secondes
     startTimer();
   }
 };
