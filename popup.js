@@ -1,1 +1,1 @@
-console.log("hello woed");
+alert('Hello t\'as ouvert un onglet')

@@ -2,11 +2,18 @@
   "manifest_version": 3,
   "name": "Minimal Manifest",
   "version": "1.0.0",
-  "description": "Test Extension",
-  "content_scripts": "popup.js",
-  "action": { "default_popup": "popup.html" },
-  "permission": ["activeTab", "scripting"],
+  "description": "Affiche une alerte à chaque ouverture d'onglet.",
+  "permissions": ["tabs"],
   "background": {
     "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["popup.js"]
+    }
+  ],
+  "action": {
+    "default_title": "Ouvrir une alerte"
   }
 }

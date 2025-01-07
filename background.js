@@ -1,5 +1,7 @@
-chrome.action.onClicked.addListener((tab) => {
-  chrome.scripting.executeScript({
-    files: ["popup.js"],
-  });
-});
+chrome.tabs.onCreated.addListener((tab) => {
+  chrome.scripting.executeScript({ 
+    target: { 
+      tabId: tab.id 
+    }, files: ['popup.js']
+})
+})
