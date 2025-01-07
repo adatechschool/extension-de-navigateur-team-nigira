@@ -29,6 +29,4 @@ const startTimer = () => {
 };
 
 // Démarrer automatiquement au chargement
-buttonStart.addEventListener("click", () => {
-  startTimer();
-});
+buttonStart.addEventListener("click", startTimer);
