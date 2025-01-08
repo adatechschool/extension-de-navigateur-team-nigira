@@ -1,8 +1,11 @@
-let time = 1500;
-const timerElement = document.querySelector("#timer");
+const workSessionDuration = 10
+const breakDuration = 5
+let time = 5;
 let timeToWork = true;
 let workInterval;
+const timerElement = document.querySelector("#timer");
 const buttonStart = document.querySelector(".button");
+const buttonEnd = document.querySelector("#buttonEnd")
 
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
@@ -17,16 +20,23 @@ const decreaseTime = () => {
   time--;
 
   if (time < 0) {
-    clearInterval(workInterval);
     timeToWork = !timeToWork; // Alterner entre travail et pause
-    time = timeToWork ? 1500 : 300; // Repasser à 10 secondes ou 5 secondes
-    startTimer();
+    time = timeToWork ? workSessionDuration : breakDuration; // Repasser à 10 secondes ou 5 secondes
   }
-};
+}
 
 const startTimer = () => {
-  workInterval = setInterval(decreaseTime, 1000);
+    clearInterval(workInterval);
+    timeToWork = true;
+    time = workSessionDuration;
+    decreaseTime();
+    workInterval = setInterval(decreaseTime, 1000);
 };
 
 // Démarrer automatiquement au chargement
 buttonStart.addEventListener("click", startTimer);
+
+buttonEnd.addEventListener('click', () => {
+    clearInterval(workInterval)
+    timerElement.innerText = ``;
+})
