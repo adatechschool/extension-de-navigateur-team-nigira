@@ -50,12 +50,12 @@ function endTimer (){
     buttonEnd.style.display = "none"
     buttonStart.style.display = "block"
     usersInput.innerHTML = `
-    <label for="workTime">Choisissez l'heure travail (m)</label>
+    <label for="workTime">Choisissez l'heure travail (min)</label>
     <input 
         type="number" 
         id="workTime"
         min="0">
-    <label for="breakTime">Choisissez l'heure pause (m)</label>
+    <label for="breakTime">Choisissez l'heure pause (min)</label>
     <input 
         type="number" 
         id="breakTime"
