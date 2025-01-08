@@ -34,9 +34,16 @@ const startTimer = () => {
 };
 
 // Démarrer automatiquement au chargement
-buttonStart.addEventListener("click", startTimer);
+buttonStart.addEventListener("click", () => {
+    startTimer()
+    buttonEnd.style.display = "block"
+    buttonStart.style.display = "none"
+});
 
 buttonEnd.addEventListener('click', () => {
     clearInterval(workInterval)
     timerElement.innerText = ``;
+    buttonEnd.style.display = "none"
+    buttonStart.style.display = "block"
+
 })
