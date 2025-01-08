@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="popup.js"></script>
+    <link rel="stylesheet" href="popup.css">
     <title>test Extension</title>
   </head>
   <body>
@@ -11,12 +12,12 @@
     <div>
       <button id = "buttonStart">Start</button>
       <div id = "usersInput">
-      <label for= "workTime">Choissisez l'heure travail (min) </label>
+      <label class = "labelInput" for = "workTime">Choissisez l'heure travail (min) </label>
         <input 
         type="number" 
         id = "workTime"
         min = "0">
-        <label for = "breakTime">Choisissez l'heure pause (min) </label>
+        <label class = "labelInput" for = "breakTime">Choisissez l'heure pause (min) </label>
         <input 
         type="number" 
         id = "breakTime"
