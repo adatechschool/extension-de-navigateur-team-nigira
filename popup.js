@@ -22,10 +22,11 @@ const decreaseTime = () => {
 
   timerElement.innerText = `${minutes}:${seconds}`;
   time--;
-
+  //a voir pour alterner les Audio de RAISSA
   if (time < 0) {
     timeToWork = !timeToWork; // Alterner entre travail et pause
-    time = timeToWork ? workSessionDuration.value : breakDuration.value; // Repasser à 10 secondes ou 5 secondes
+    timeToWork ? workSessionDuration.value : breakDuration.value; // Repasser à 10 secondes ou 5 seconde
+    timeToWork ? playSoundWork() : playSoundBreak()
     if (timeToWork) {
       time = workSessionDuration.value;
       if (musicCheckbox.checked) {
@@ -34,7 +35,7 @@ const decreaseTime = () => {
     } else {
       time = breakDuration.value; // Repasser à la pause
       audioPlayer.pause(); // Arrêter la musique pendant la pause
-      audioPlayer.currentTime = 0; // Réinitialiser la position de la musique
+      audioPlayer.currentTime = 0; // Réinitialiser la position de la musiq
     }
     decreaseTime();
   }
@@ -87,3 +88,71 @@ function endTimer() {
   audioPlayer.pause(); // Mettre en pause la musique
   audioPlayer.currentTime = 0;
 }
+
+const goTobreak = [
+  '/audios/Audio_giau_pause.mp3',
+  '/audios/Audio_nico_pause.mp3',
+  '/audios/Audio_Raissa_pause.mp3'
+];
+
+const goToWork = [
+  '/audios/Audio_giau_taff.mp3',
+  '/audios/Audio_nico_taff.mp3',
+  '/audios/Audio_Raissa_taff.mp3'
+]
+
+// const buttonSound = document.querySelector('.test');
+// buttonSound.addEventListener('click', () => {
+//   console.log('chrome runtime', chrome.runtime)
+//   const audioIndex = Math.floor(Math.random() * goTobreak.length);
+//   console.log('audio index:', audioIndex)
+//   const audioPath = chrome.runtime.getURL(goTobreak[audioIndex]);
+//   console.log('audio Path', audioPath)
+//   const audio = new Audio(audioPath);
+//   audio.play()
+// });
+
+
+const playSoundBreak = () => {
+
+    const audioIndex = Math.floor(Math.random() * goTobreak.length);
+    const audioPath = chrome.runtime.getURL(goTobreak[audioIndex]);
+    console.log('audio path:', audioPath)
+    audio = new Audio(audioPath)
+
+  return audio.play()
+}
+
+const playSoundWork = () => {
+  const audioIndex = Math.floor(Math.random() * goToWork.length);
+  const audioPath = chrome.runtime.getURL(goToWork[audioIndex]);
+  console.log('audio path WORK:', audioPath)
+  audio = new Audio(audioPath)
+
+return audio.play()
+}
+// }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   if (chrome.runtime && chrome.runtime.getURL) {
+//     const audioPath = chrome.runtime.getURL('audios/Audio_giau_pause.mp3');
+//     console.log('Chemin de l’audio :', audioPath);
+//     const audio = new Audio(audioPath);
+//     audio.oncanplaythrough = () => {
+//       console.log('L\'audio peut être lu');
+//       audio.play().catch(error => {
+//         console.error('Échec de la lecture de l’audio :', error);
+//       });
+//     };
+//     audio.onerror = (e) => {
+//       console.error('Échec du chargement de l’audio :', e);
+//     };
+//   } else {
+//     console.error('chrome.runtime.getURL est indéfini');
+//   }
+// });
+
+
+
+
+
