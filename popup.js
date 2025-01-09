@@ -10,6 +10,7 @@ const buttonEnd = document.querySelector("#buttonEnd");
 
 const musicCheckbox = document.querySelector("#musicCheckbox");
 const audioPlayer = document.querySelector("#audioPlayer");
+const musicBox = document.querySelector("#musicBox")
 
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
@@ -58,6 +59,7 @@ buttonStart.addEventListener("click", () => {
   buttonEnd.style.display = "block";
   buttonStart.style.display = "none";
   usersInput.innerHTML = "";
+  musicBox.innerHTML =""
   if (timeToWork && musicCheckbox.checked) {
     audioPlayer.play();
   } else {
@@ -85,8 +87,15 @@ function endTimer() {
         id="breakTime"
         min="0">
 `;
+musicBox.innerHTML= `
+<label>
+  <input type="checkbox" id="musicCheckbox" />
+  Activer la musique
+</label>
+`
   audioPlayer.pause(); // Mettre en pause la musique
   audioPlayer.currentTime = 0;
+  
 }
 
 const goTobreak = [
@@ -100,17 +109,6 @@ const goToWork = [
   '/audios/Audio_nico_taff.mp3',
   '/audios/Audio_Raissa_taff.mp3'
 ]
-
-// const buttonSound = document.querySelector('.test');
-// buttonSound.addEventListener('click', () => {
-//   console.log('chrome runtime', chrome.runtime)
-//   const audioIndex = Math.floor(Math.random() * goTobreak.length);
-//   console.log('audio index:', audioIndex)
-//   const audioPath = chrome.runtime.getURL(goTobreak[audioIndex]);
-//   console.log('audio Path', audioPath)
-//   const audio = new Audio(audioPath);
-//   audio.play()
-// });
 
 
 const playSoundBreak = () => {
@@ -131,28 +129,3 @@ const playSoundWork = () => {
 
 return audio.play()
 }
-// }
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   if (chrome.runtime && chrome.runtime.getURL) {
-//     const audioPath = chrome.runtime.getURL('audios/Audio_giau_pause.mp3');
-//     console.log('Chemin de l’audio :', audioPath);
-//     const audio = new Audio(audioPath);
-//     audio.oncanplaythrough = () => {
-//       console.log('L\'audio peut être lu');
-//       audio.play().catch(error => {
-//         console.error('Échec de la lecture de l’audio :', error);
-//       });
-//     };
-//     audio.onerror = (e) => {
-//       console.error('Échec du chargement de l’audio :', e);
-//     };
-//   } else {
-//     console.error('chrome.runtime.getURL est indéfini');
-//   }
-// });
-
-
-
-
-

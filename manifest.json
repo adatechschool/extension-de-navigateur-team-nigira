@@ -28,6 +28,16 @@
   ],
   "action": {
     "default_popup": "popup.html",
+    "defaut_icon": {
+      "16": "icons/logoExtension.png",
+      "48": "icons/logoExtension.png",
+      "128": "icons/logoExtension.png"
+    },
     "default_title": "Ouvrir une alerte"
+  },
+  "icons": {
+    "16": "icons/logoExtension.png",
+    "48": "icons/logoExtension.png",
+    "128": "icons/logoExtension.png"
   }
 }
