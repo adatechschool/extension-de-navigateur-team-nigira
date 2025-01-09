@@ -1,7 +1,7 @@
-const workSessionDuration = document.querySelector("#workTime");
-const breakDuration = document.querySelector("#breakTime");
+let workSessionDuration = "";
+let breakDuration = "";
 const usersInput = document.querySelector("#usersInput");
-let time = breakDuration.value;
+let time = breakDuration;
 let timeToWork = true;
 let workInterval;
 const timerElement = document.querySelector("#timer");
@@ -26,15 +26,15 @@ const decreaseTime = () => {
   //a voir pour alterner les Audio de RAISSA
   if (time < 0) {
     timeToWork = !timeToWork; // Alterner entre travail et pause
-    timeToWork ? workSessionDuration.value : breakDuration.value; // Repasser à 10 secondes ou 5 seconde
+    timeToWork ? workSessionDuration : breakDuration; // Repasser à 10 secondes ou 5 seconde
     timeToWork ? playSoundWork() : playSoundBreak()
     if (timeToWork) {
-      time = workSessionDuration.value;
+      time = workSessionDuration;
       if (musicCheckbox.checked) {
         audioPlayer.play();
       }
     } else {
-      time = breakDuration.value; // Repasser à la pause
+      time = breakDuration; // Repasser à la pause
       audioPlayer.pause(); // Arrêter la musique pendant la pause
       audioPlayer.currentTime = 0; // Réinitialiser la position de la musiq
     }
@@ -42,10 +42,10 @@ const decreaseTime = () => {
   }
 };
 
-const startTimer = () => {
+const startTimer = () => { 
   clearInterval(workInterval);
   timeToWork = true;
-  time = workSessionDuration.value;
+  time = workSessionDuration;
   if (musicCheckbox.checked) {
     audioPlayer.play();
   }
@@ -55,11 +55,13 @@ const startTimer = () => {
 
 // Démarrer automatiquement au chargement
 buttonStart.addEventListener("click", () => {
+  workSessionDuration = document.querySelector("#workTime").value;
+  breakDuration = document.querySelector("#breakTime").value;
   startTimer();
   buttonEnd.style.display = "block";
   buttonStart.style.display = "none";
   usersInput.innerHTML = "";
-  musicBox.innerHTML =""
+  musicBox.innerHTML = ""
   if (timeToWork && musicCheckbox.checked) {
     audioPlayer.play();
   } else {
@@ -71,6 +73,8 @@ buttonStart.addEventListener("click", () => {
 buttonEnd.addEventListener("click", endTimer);
 
 function endTimer() {
+  breakDuration.innerHTML= ""
+  workSessionDuration.innerHTML= ""
   clearInterval(workInterval);
   timerElement.innerText = ``;
   buttonEnd.style.display = "none";
