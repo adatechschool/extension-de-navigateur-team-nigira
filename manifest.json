@@ -3,17 +3,31 @@
   "name": "Minimal Manifest",
   "version": "1.0.0",
   "description": "Affiche une alerte à chaque ouverture d'onglet.",
-  "permissions": ["tabs"],
-  "background": {
-    "service_worker": "background.js"
-  },
+  "permissions": [
+    "tabs",
+    "activeTab"
+  ],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["popup.js"]
     }
   ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+      "/audios/Audio_giau_pause.mp3",
+      "/audios/Audio_nico_pause.mp3",
+      "/audios/Audio_Raissa_pause.mp3",
+      "/audios/Audio_giau_taff.mp3",
+      "/audios/Audio_nico_taff.mp3",
+      "/audios/Audio_Raissa_taff.mp3"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "action": {
+    "default_popup": "popup.html",
     "default_title": "Ouvrir une alerte"
   }
 }

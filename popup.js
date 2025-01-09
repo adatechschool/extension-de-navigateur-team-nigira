@@ -62,6 +62,7 @@ buttonStart.addEventListener("click", () => {
   } else {
     audioPlayer.pause();
     audioPlayer.currentTime = 0; //reinitialise la position de la misique au debut de la lécture
+    playSound()
   }
 });
 
@@ -87,3 +88,35 @@ function endTimer() {
   audioPlayer.pause(); // Mettre en pause la musique
   audioPlayer.currentTime = 0;
 }
+
+const goTobreak = [
+  '/audios/Audio_giau_pause.mp3',
+  '/audios/Audio_nico_pause.mp3',
+  '/audios/Audio_Raissa_pause.mp3'
+];
+
+// const buttonSound = document.querySelector('.test');
+// buttonSound.addEventListener('click', () => {
+//   console.log('chrome runtime', chrome.runtime)
+//   const audioIndex = Math.floor(Math.random() * goTobreak.length);
+//   console.log('audio index:', audioIndex)
+//   const audioPath = chrome.runtime.getURL(goTobreak[audioIndex]);
+//   console.log('audio Path', audioPath)
+//   const audio = new Audio(audioPath);
+//   audio.play()
+// });
+
+
+const playSound = () => {
+  const audioIndex = Math.floor(Math.random() * goTobreak.length);
+  const audioPath = chrome.runtime.getURL(goTobreak[audioIndex]);
+  console.log('audio path:', audioPath)
+  const audio = new Audio(audioPath);
+
+  return audio.play()
+
+}
+
+
+
+
