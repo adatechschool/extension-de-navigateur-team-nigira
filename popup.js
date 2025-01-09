@@ -10,6 +10,7 @@ const buttonEnd = document.querySelector("#buttonEnd");
 
 const musicCheckbox = document.querySelector("#musicCheckbox");
 const audioPlayer = document.querySelector("#audioPlayer");
+const musicBox = document.querySelector("#musicBox")
 
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
@@ -58,6 +59,7 @@ buttonStart.addEventListener("click", () => {
   buttonEnd.style.display = "block";
   buttonStart.style.display = "none";
   usersInput.innerHTML = "";
+  musicBox.innerHTML =""
   if (timeToWork && musicCheckbox.checked) {
     audioPlayer.play();
   } else {
@@ -85,8 +87,15 @@ function endTimer() {
         id="breakTime"
         min="0">
 `;
+musicBox.innerHTML= `
+<label>
+  <input type="checkbox" id="musicCheckbox" />
+  Activer la musique
+</label>
+`
   audioPlayer.pause(); // Mettre en pause la musique
   audioPlayer.currentTime = 0;
+  
 }
 
 const goTobreak = [
