@@ -14,6 +14,9 @@ const musicBox = document.querySelector("#musicBox")
 
 const buttonAdd = document.querySelector("#buttonAdd")
 const listContainer = document.querySelector("#listContainer")
+const buttonPoubelle = document.querySelector("#buttonPoubelle")
+const champsSaisie = document.querySelector("#champsSaisie")
+const listCheckBox = document.querySelector("#listCheckBox")
 
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
@@ -137,3 +140,9 @@ return audio.play()
 buttonAdd.addEventListener('click',()=>{
   listContainer.style.display = "block"
 })
+buttonPoubelle.addEventListener('click', () =>{
+  champsSaisie.value = ""
+})
+if (listCheckBox.checked){
+  champsSaisie.disabled = true
+}

@@ -60,9 +60,6 @@ img{
 	cursor: pointer;
 	outline: inherit;
 }
-#checkBox{
-    padding: 20px;
-}
 #listContainer{
     display: flex;
     justify-content: center;
