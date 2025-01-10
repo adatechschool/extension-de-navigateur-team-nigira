@@ -12,6 +12,12 @@ const musicCheckbox = document.querySelector("#musicCheckbox");
 const audioPlayer = document.querySelector("#audioPlayer");
 const musicBox = document.querySelector("#musicBox")
 
+const buttonAdd = document.querySelector("#buttonAdd")
+const listContainer = document.querySelector("#listContainer")
+const buttonPoubelle = document.querySelector("#buttonPoubelle")
+const champsSaisie = document.querySelector("#champsSaisie")
+const listCheckBox = document.querySelector("#listCheckBox")
+
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
   let minutes = parseInt(time / 60, 10);
@@ -113,7 +119,6 @@ const goToWork = [
   '/audios/Audio_Raissa_taff.mp3'
 ]
 
-
 const playSoundBreak = () => {
 
     const audioIndex = Math.floor(Math.random() * goTobreak.length);
@@ -131,4 +136,13 @@ const playSoundWork = () => {
   audio = new Audio(audioPath)
 
 return audio.play()
+}
+buttonAdd.addEventListener('click',()=>{
+  listContainer.style.display = "block"
+})
+buttonPoubelle.addEventListener('click', () =>{
+  champsSaisie.value = ""
+})
+if (listCheckBox.checked){
+  champsSaisie.disabled = true
 }
