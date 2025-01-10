@@ -8,10 +8,18 @@
     <title>test Extension</title>
   </head>
   <body>
+    <div id = "pomodoroContainer">
     <div id = "TodoList">
-      <button id = "buttonAdd"></button>
-      <input type="text" placeholder="Champs Saisie">
-      <button><img src="" alt=""></button>
+      <h4>To Do List</h4>
+      <button id = "buttonAdd">ADD</button>
+
+      <div id = "listContainer" style="display: none;">
+      <input type="checkBox" id="checkBox">
+      <input id="champsSaisie" type="text" placeholder="Champs Saisie">
+      <!--<input type="button" name="poubelle" id="iconsPoubelle">-->
+      <button id = "buttonPoubelle"><img src="icons/poubelle.png" alt="iconPoubelle"></button>
+      </div>
+
     </div>
 
     <div id = "pomodoro" >
@@ -26,7 +34,6 @@
           Choisissez l'heure pause (min)
           <input type="number" id="breakTime" min="0" />
         </label>
-        <input type="number" id="breakTime" min="0" />
       </div>
       <div id = "musicBox">
       <label id = "labelMusique">
@@ -43,6 +50,6 @@
       <div id="timer"></div>
       <button id="buttonEnd" style="display: none">End</button>
     </div>
-
+    </div>
   </body>
 </html>

@@ -12,6 +12,9 @@ const musicCheckbox = document.querySelector("#musicCheckbox");
 const audioPlayer = document.querySelector("#audioPlayer");
 const musicBox = document.querySelector("#musicBox")
 
+const buttonAdd = document.querySelector("#buttonAdd")
+const listContainer = document.querySelector("#listContainer")
+
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
   let minutes = parseInt(time / 60, 10);
@@ -113,7 +116,6 @@ const goToWork = [
   '/audios/Audio_Raissa_taff.mp3'
 ]
 
-
 const playSoundBreak = () => {
 
     const audioIndex = Math.floor(Math.random() * goTobreak.length);
@@ -132,3 +134,6 @@ const playSoundWork = () => {
 
 return audio.play()
 }
+buttonAdd.addEventListener('click',()=>{
+  listContainer.style.display = "block"
+})
