@@ -38,7 +38,6 @@ const decreaseTime = () => {
       audioPlayer.pause(); // Arrêter la musique pendant la pause
       audioPlayer.currentTime = 0; // Réinitialiser la position de la musiq
     }
-    decreaseTime();
   }
 };
 
