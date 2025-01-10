@@ -13,4 +13,23 @@ body {
     border: 2px solid black;
     padding: 10px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column
+}
+#pomodoro h5{
+    text-align: center;
+}
+#usersInput{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input,
+label {
+  margin: 0.4rem 0;
+}
+input{
+    width: 30px;
+    height: 30px;
 }

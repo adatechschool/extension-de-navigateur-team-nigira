@@ -17,12 +17,14 @@
     <div id = "pomodoro" >
       <h5>Pomodoro</h5>
       <div id="usersInput">
-        <label class="labelInput" for="workTime"
-          >Choissisez l'heure travail (min)
+        <label class="labelInput" for="workTime">
+          Choissisez l'heure travail (min)
+          <input type="number" id="workTime" min="0" />
         </label>
-        <input type="number" id="workTime" min="0" />
-        <label class="labelInput" for="breakTime"
-          >Choisissez l'heure pause (min)
+        
+        <label class="labelInput" for="breakTime">
+          Choisissez l'heure pause (min)
+          <input type="number" id="breakTime" min="0" />
         </label>
         <input type="number" id="breakTime" min="0" />
       </div>
@@ -37,6 +39,7 @@
         id="audioPlayer"
         src="audios/The Most Beautiful & Relaxing Piano Pieces (Vol. 1).mp3"
       ></audio>
+
       <div id="timer"></div>
       <button id="buttonEnd" style="display: none">End</button>
     </div>
