@@ -153,8 +153,6 @@ const createTask = (taskContent) => {
   const taskItem = document.createElement('li');
   taskItem.classList.add('task');
   taskItem.innerText = taskContent
-  // const getTask = addTask(inputEntry.value);
-  // containerTask.style.display = 'block';
 
   // création de l'input lors du doubleClick
   taskItem.addEventListener('dblclick', () => {
@@ -165,8 +163,7 @@ const createTask = (taskContent) => {
     // ajouter la tâche avec entrer
     input.addEventListener('keypress', (e) => {
       if(e.key === 'Enter'){
-        taskItem.innerText = input.value;
-        // taskItem.appendChild(input)
+        taskItem.innerHTML = input.value;
       }
     });
     taskItem.innerHTML = '';
