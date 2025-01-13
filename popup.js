@@ -58,6 +58,23 @@ const startTimer = () => {
   workInterval = setInterval(decreaseTime, 1000);
 };
 
+document.querySelector("#workTime").addEventListener("change", () => {
+  updateStartButtonState()
+})
+document.querySelector("#breakTime").addEventListener("change", () => {
+  updateStartButtonState()
+})
+
+function updateStartButtonState() {
+  workSessionDuration = document.querySelector("#workTime").value;
+  breakDuration = document.querySelector("#breakTime").value;
+  if (workSessionDuration < 1 || breakDuration < 1) {
+    buttonStart.disabled = true;
+  } else {
+    buttonStart.disabled = false;
+  }
+}
+updateStartButtonState();
 // Démarrer automatiquement au chargement
 buttonStart.addEventListener("click", () => {
   workSessionDuration = document.querySelector("#workTime").value;
@@ -137,12 +154,22 @@ const playSoundWork = () => {
 
 return audio.play()
 }
+
+let index = 1;
 buttonAdd.addEventListener('click',()=>{
   listContainer.style.display = "block"
+  createToDoListElement(index)
+  index++;
 })
-buttonPoubelle.addEventListener('click', () =>{
-  champsSaisie.value = ""
-})
-if (listCheckBox.checked){
-  champsSaisie.disabled = true
+
+function createToDoListElement(givenIndex) {
+  listContainer.innerHTML += `<input type="checkBox" id="listCheckBox${givenIndex}">
+  <input id="champsSaisie${givenIndex}" type="text" placeholder="Champs Saisie...">
+  <button id = "buttonPoubelle${givenIndex}" onclick = "cleanToDoListElements(${givenIndex})"><img src="icons/poubelle.png" alt="iconPoubelle"></button>`;
+}
+
+function cleanToDoListElements(givenIndex) {
+  document.querySelector(`#listCheckBox${givenIndex}`).remove()
+    document.querySelector(`#champsSaisie${givenIndex}`).remove()
+    document.querySelector(`#buttonPoubelle${givenIndex}`).remove()
 }
