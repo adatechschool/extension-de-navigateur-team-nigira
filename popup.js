@@ -164,9 +164,21 @@ buttonAdd.addEventListener('click',()=>{
   document.querySelector(`#buttonPoubelle${currentIndex}`).addEventListener('click',() => {
   cleanToDoListElements(currentIndex);
   })
+  //document.querySelector(`#champsSaisie${currentIndex}`).addEventListener('keypress',function(event){
+  //  if (event.key === "Enter"){
+  //    createToDoListElement(currentIndex)
+  //  }
+  //})
 })
 index++;
 })
+//buttonIndexes.forEach( (currentIndex) => {
+// document.querySelector(`#champsSaisie${currentIndex}`).addEventListener('keypress',function(event){
+//    if (event.key === "Enter"){
+//      event.createToDoListElement(currentIndex)
+//    }
+//})
+//})
 
 function createToDoListElement(givenIndex) {
   listContainer.innerHTML += `<input type="checkBox" id="listCheckBox${givenIndex}">
