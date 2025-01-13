@@ -51,7 +51,7 @@ img{
     width: 30px;
     height: 30px;
 }
-#buttonPoubelle{
+.buttonPoubelle{
     background: none;
 	color: inherit;
 	border: none;

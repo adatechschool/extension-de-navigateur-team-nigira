@@ -156,20 +156,28 @@ return audio.play()
 }
 
 let index = 1;
+let buttonIndexes = new Set()
 buttonAdd.addEventListener('click',()=>{
   listContainer.style.display = "block"
   createToDoListElement(index)
-  index++;
+  buttonIndexes.forEach( (currentIndex) => {
+  document.querySelector(`#buttonPoubelle${currentIndex}`).addEventListener('click',() => {
+  cleanToDoListElements(currentIndex);
+  })
+})
+index++;
 })
 
 function createToDoListElement(givenIndex) {
   listContainer.innerHTML += `<input type="checkBox" id="listCheckBox${givenIndex}">
   <input id="champsSaisie${givenIndex}" type="text" placeholder="Champs Saisie...">
-  <button id = "buttonPoubelle${givenIndex}" onclick = "cleanToDoListElements(${givenIndex})"><img src="icons/poubelle.png" alt="iconPoubelle"></button>`;
+  <button id = "buttonPoubelle${givenIndex}" class ="buttonPoubelle" onclick ="cleanToDoListElements(${givenIndex})"><img src="icons/poubelle.png" alt="iconPoubelle"></button>`;
+  buttonIndexes.add(index)
 }
 
 function cleanToDoListElements(givenIndex) {
+  buttonIndexes.delete(givenIndex)
   document.querySelector(`#listCheckBox${givenIndex}`).remove()
-    document.querySelector(`#champsSaisie${givenIndex}`).remove()
-    document.querySelector(`#buttonPoubelle${givenIndex}`).remove()
+  document.querySelector(`#champsSaisie${givenIndex}`).remove()
+  document.querySelector(`#buttonPoubelle${givenIndex}`).remove()
 }
