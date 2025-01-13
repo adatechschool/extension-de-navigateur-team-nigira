@@ -1,12 +1,6 @@
 body {
-<<<<<<< HEAD
     /**width: 400px;**/
     font-family: Montserrat, 'sans-sérif';
-=======
-    display: block;
-    width: 400px;
-    font-family: Arial, Helvetica, sans-serif;
->>>>>>> branchTodoList
     background-color: white;
     margin: 0 ;
     padding: 16px;
@@ -22,21 +16,10 @@ body {
     /**padding: 10px;**/
     border-radius: 20px;
     display: flex;
-<<<<<<< HEAD
-=======
-    flex-direction: column
-}
-#pomodoro h5{
-    text-align: center;
-}
-#usersInput{
-    display: flex;
->>>>>>> branchTodoList
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-<<<<<<< HEAD
 
 /** BUTTON **/ 
 
@@ -156,44 +139,5 @@ label {
     font-size: 18px;
 }
 
-=======
-input,
-label {
-  margin: 0.4rem 0;
-}
-#usersInput input{
-    width: 30px;
-    height: 30px;
-}
-#todoList{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#champsSaisie{
-    height: 18px;
-    width: 200px;
-    padding: 10px;
-    font-size: 16px;
-    margin: 20px;
 
-}
-img{
-    width: 30px;
-    height: 30px;
-}
-#buttonPoubelle{
-    background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-}
-#listContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
->>>>>>> branchTodoList
+

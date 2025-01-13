@@ -1,3 +1,6 @@
+import { addTask } from "./js/todo/task.js";
+import { containerTask, inputEntry, add, tasksList } from "./js/todo/variableTodo.js";
+
 let workSessionDuration = "";
 let breakDuration = "";
 const usersInput = document.querySelector("#usersInput");
@@ -12,11 +15,11 @@ const musicCheckbox = document.querySelector("#musicCheckbox");
 const audioPlayer = document.querySelector("#audioPlayer");
 const musicBox = document.querySelector("#musicBox")
 
-const buttonAdd = document.querySelector("#buttonAdd")
-const listContainer = document.querySelector("#listContainer")
-const buttonPoubelle = document.querySelector("#buttonPoubelle")
-const champsSaisie = document.querySelector("#champsSaisie")
-const listCheckBox = document.querySelector("#listCheckBox")
+// const buttonAdd = document.querySelector("#buttonAdd")
+// const listContainer = document.querySelector("#listContainer")
+// const buttonPoubelle = document.querySelector("#buttonPoubelle")
+// const champsSaisie = document.querySelector("#champsSaisie")
+// const listCheckBox = document.querySelector("#listCheckBox")
 
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
@@ -32,7 +35,7 @@ const decreaseTime = () => {
   //a voir pour alterner les Audio de RAISSA
   if (time < 0) {
     timeToWork = !timeToWork; // Alterner entre travail et pause
-    timeToWork ? workSessionDuration : breakDuration; // Repasser à 10 secondes ou 5 seconde
+    // time = timeToWork ? workSessionDuration : breakDuration; // Repasser à 10 secondes ou 5 seconde
     timeToWork ? playSoundWork() : playSoundBreak()
     if (timeToWork) {
       time = workSessionDuration;
@@ -78,8 +81,8 @@ buttonStart.addEventListener("click", () => {
 buttonEnd.addEventListener("click", endTimer);
 
 function endTimer() {
-  breakDuration.innerHTML= ""
-  workSessionDuration.innerHTML= ""
+  breakDuration = ""
+  workSessionDuration = ""
   clearInterval(workInterval);
   timerElement.innerText = ``;
   buttonEnd.style.display = "none";
@@ -124,25 +127,67 @@ const playSoundBreak = () => {
     const audioIndex = Math.floor(Math.random() * goTobreak.length);
     const audioPath = chrome.runtime.getURL(goTobreak[audioIndex]);
     console.log('audio path:', audioPath)
-    audio = new Audio(audioPath)
+    const audio = new Audio(audioPath)
 
-  return audio.play()
+    return audio.play()
 }
 
 const playSoundWork = () => {
   const audioIndex = Math.floor(Math.random() * goToWork.length);
   const audioPath = chrome.runtime.getURL(goToWork[audioIndex]);
   console.log('audio path WORK:', audioPath)
-  audio = new Audio(audioPath)
+  const audio = new Audio(audioPath)
 
-return audio.play()
+  return audio.play()
 }
-buttonAdd.addEventListener('click',()=>{
-  listContainer.style.display = "block"
-})
-buttonPoubelle.addEventListener('click', () =>{
-  champsSaisie.value = ""
-})
-if (listCheckBox.checked){
-  champsSaisie.disabled = true
+
+const createTaskInput = () => {
+  containerTask.style.display = 'block';
+  inputEntry.focus()
 }
+
+const createTask = (taskContent) => {
+  addTask(taskContent)
+
+  // création de la tâche
+  const taskItem = document.createElement('li');
+  taskItem.classList.add('task');
+  taskItem.innerText = taskContent
+  // const getTask = addTask(inputEntry.value);
+  // containerTask.style.display = 'block';
+
+  // création de l'input lors du doubleClick
+  taskItem.addEventListener('dblclick', () => {
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = taskItem.innerText;
+
+    // ajouter la tâche avec entrer
+    input.addEventListener('keypress', (e) => {
+      if(e.key === 'Enter'){
+        taskItem.innerText = input.value;
+        // taskItem.appendChild(input)
+      }
+    });
+    taskItem.innerHTML = '';
+    taskItem.appendChild(input);
+    input.focus();
+  });
+  tasksList.appendChild(taskItem)
+}
+
+
+add.addEventListener('click', createTaskInput);
+
+inputEntry.addEventListener('keypress', (e) => {
+  if(e.key === 'Enter' && inputEntry.value !== ''){
+    createTask(inputEntry.value);
+    inputEntry.value = '';
+    containerTask.style.display + 'none'
+  }
+});
+
+
+// créer bouton delete
+// créer checkbox
+
