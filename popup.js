@@ -150,3 +150,9 @@ inputEntry.addEventListener('keypress', (e) => {
   }
 });
 
+
+// CHROME STORAGE AU MOMENT OU LES VALEURS SONT RECUPERER
+// CHROME TABS ?
+// tabs query et ne rien mettre sur les accolades
+// chrome scripting excutescript
+// boucler sur toute les pages valides
