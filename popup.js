@@ -146,31 +146,58 @@ const createTaskInput = () => {
   inputEntry.focus()
 }
 
-const createTask = (taskContent) => {
-  addTask(taskContent)
+let taskIndexes = new Set()
+let taskIndex = 1
+const createTask = (taskName) => {
+  addTask(taskName)
 
   // création de la tâche
-  const taskItem = document.createElement('li');
-  taskItem.classList.add('task');
-  taskItem.innerText = taskContent
+  const task = document.createElement('li');
+  task.id = `task${taskIndex}`
+  task.classList.add('task');
+  //task.innerText = taskName
+
+  const checkbox = document.createElement('input');
+  checkbox.type = "checkbox"
+
+  const label = document.createElement('label');
+  label.innerText = taskName
+
+  const button = document.createElement('button');
+  button.id = `delete${taskIndex}`
+  button.innerText = `delete`
+
+  task.appendChild(checkbox)
+  task.appendChild(label)
+  task.appendChild(button)
 
   // création de l'input lors du doubleClick
-  taskItem.addEventListener('dblclick', () => {
+  label.addEventListener('dblclick', () => {
     const input = document.createElement('input');
     input.type = 'text';
-    input.value = taskItem.innerText;
+    input.value = label.innerText;
 
     // ajouter la tâche avec entrer
-    input.addEventListener('keypress', (e) => {
-      if(e.key === 'Enter'){
-        taskItem.innerHTML = input.value;
+    input.addEventListener('keypress', (event) => {
+      if(event.key === 'Enter'){
+        label.innerHTML = input.value;
       }
     });
-    taskItem.innerHTML = '';
-    taskItem.appendChild(input);
+    label.innerHTML = '';
+    label.appendChild(input);
     input.focus();
   });
-  tasksList.appendChild(taskItem)
+  tasksList.appendChild(task)
+  taskIndexes.add(taskIndex)
+
+  taskIndexes.forEach((index) => {
+    document.querySelector(`#delete${index}`).addEventListener('click', () => {
+      document.querySelector(`#task${index}`).remove()
+      taskIndexes.delete(index)
+    });
+  })
+
+  taskIndex++
 }
 
 
@@ -183,8 +210,3 @@ inputEntry.addEventListener('keypress', (e) => {
     containerTask.style.display + 'none'
   }
 });
-
-
-// créer bouton delete
-// créer checkbox
-

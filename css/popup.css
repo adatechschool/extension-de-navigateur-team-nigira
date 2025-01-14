@@ -138,3 +138,8 @@ label {
 .labelMusic {
     font-size: 18px;
 }
+
+ul {
+    list-style-type: none;
+  }
+  
