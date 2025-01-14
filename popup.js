@@ -183,7 +183,8 @@ const createTask = (taskName) => {
 
   const button = document.createElement('button');
   button.id = `delete${taskIndex}`
-  button.innerText = `delete`
+  button.classList.add("buttonPoubelle")
+  button.innerHTML += `<img src="icons/poubelle.png">`
 
   task.appendChild(checkbox)
   task.appendChild(label)

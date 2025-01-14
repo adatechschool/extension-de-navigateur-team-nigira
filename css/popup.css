@@ -164,4 +164,27 @@ ul {
     justify-content: center;
     align-items: center;
 }
-  
+#buttonAdd{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.buttonPoubelle img{
+    height: 18px;
+    width: 18px;
+    vertical-align: middle;
+    /*background: url('icons/poubelle.png');*/
+}
+.buttonPoubelle{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
