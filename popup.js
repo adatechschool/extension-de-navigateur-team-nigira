@@ -60,6 +60,25 @@ const startTimer = () => {
   workInterval = setInterval(decreaseTime, 1000);
 };
 
+//Statut de bouton Start
+document.querySelector("#workTime").addEventListener("change", () => {
+  updateStartButtonState()
+})
+document.querySelector("#breakTime").addEventListener("change", () => {
+  updateStartButtonState()
+})
+
+function updateStartButtonState() {
+  workSessionDuration = document.querySelector("#workTime").value;
+  breakDuration = document.querySelector("#breakTime").value;
+  if (workSessionDuration < 1 || breakDuration < 1) {
+    buttonStart.disabled = true;
+  } else {
+    buttonStart.disabled = false;
+  }
+}
+updateStartButtonState()
+
 // Démarrer automatiquement au chargement
 buttonStart.addEventListener("click", () => {
   workSessionDuration = document.querySelector("#workTime").value;
