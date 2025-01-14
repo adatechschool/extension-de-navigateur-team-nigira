@@ -2,6 +2,7 @@ import { addTask } from "./js/todo/task.js";
 import { containerTask, inputEntry, add, tasksList } from "./js/todo/variableTodo.js";
 import { goToWork, goTobreak, playSound } from "./js/pomodoro/sound.js";
 
+
 const usersInput = document.querySelector("#usersInput");
 const timerElement = document.querySelector("#timer");
 const buttonStart = document.querySelector("#buttonStart");
@@ -56,6 +57,25 @@ const startTimer = () => {
   workInterval = setInterval(decreaseTime, 1000);
 };
 
+//Statut de bouton Start
+document.querySelector("#workTime").addEventListener("change", () => {
+  updateStartButtonState()
+})
+document.querySelector("#breakTime").addEventListener("change", () => {
+  updateStartButtonState()
+})
+
+function updateStartButtonState() {
+  workSessionDuration = document.querySelector("#workTime").value;
+  breakDuration = document.querySelector("#breakTime").value;
+  if (workSessionDuration < 1 || breakDuration < 1) {
+    buttonStart.disabled = true;
+  } else {
+    buttonStart.disabled = false;
+  }
+}
+updateStartButtonState()
+
 // Démarrer automatiquement au chargement
 buttonStart.addEventListener("click", () => {
   workSessionDuration = document.querySelector("#workTime").value;
@@ -109,38 +129,63 @@ const createTaskInput = () => {
   inputEntry.focus()
 }
 
-const createTask = (taskContent) => {
-  addTask(taskContent)
+let taskIndexes = new Set()
+let taskIndex = 1
+const createTask = (taskName) => {
+  addTask(taskName)
 
   // création de la tâche
-  const taskItem = document.createElement('li');
-  taskItem.classList.add('task');
-  taskItem.innerText = taskContent
-  // const getTask = addTask(inputEntry.value);
-  // containerTask.style.display = 'block';
+  const task = document.createElement('li');
+  task.id = `task${taskIndex}`
+  task.classList.add('task');
+  //task.innerText = taskName
+
+  const checkbox = document.createElement('input');
+  checkbox.type = "checkbox"
+
+  const label = document.createElement('label');
+  label.innerText = taskName
+
+  const button = document.createElement('button');
+  button.id = `delete${taskIndex}`
+  button.classList.add("buttonPoubelle")
+  button.innerHTML += `<img src="icons/poubelle.png">`
+
+  task.appendChild(checkbox)
+  task.appendChild(label)
+  task.appendChild(button)
 
   // création de l'input lors du doubleClick
-  taskItem.addEventListener('dblclick', () => {
+  label.addEventListener('dblclick', () => {
     const input = document.createElement('input');
     input.type = 'text';
-    input.value = taskItem.innerText;
+    input.value = label.innerText;
 
     // ajouter la tâche avec entrer
-    input.addEventListener('keypress', (e) => {
-      if(e.key === 'Enter'){
-        taskItem.innerText = input.value;
-        // taskItem.appendChild(input)
+    input.addEventListener('keypress', (event) => {
+      if(event.key === 'Enter'){
+        label.innerHTML = input.value;
       }
     });
-    taskItem.innerHTML = '';
-    taskItem.appendChild(input);
+    label.innerHTML = '';
+    label.appendChild(input);
     input.focus();
   });
-  tasksList.appendChild(taskItem)
+  tasksList.appendChild(task)
+  taskIndexes.add(taskIndex)
+
+  taskIndexes.forEach((index) => {
+    document.querySelector(`#delete${index}`).addEventListener('click', () => {
+      document.querySelector(`#task${index}`).remove()
+      taskIndexes.delete(index)
+    });
+  })
+
+  taskIndex++
 }
 
 
-add.addEventListener('click', createTaskInput);
+buttonAdd.addEventListener('click', createTaskInput);
 
 inputEntry.addEventListener('keypress', (e) => {
   if(e.key === 'Enter' && inputEntry.value !== ''){

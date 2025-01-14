@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script defer type="module" src="./popup.js"></script>
-  <link rel="stylesheet" href="popup.css" />
+  <link rel="stylesheet" href="/css/popup.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
@@ -13,10 +13,22 @@
   <title>test Extension</title>
 </head>
 <body>
-  <div class="container" id="pomodoro">
+<div id = "divBody">
+  <div id = "containerTodo"> 
+    <h1>TO DO LIST</h1>
+    <button id = "buttonAdd"><img src="icons/boutton_Add.png" alt=""></button>
+    <div id = "containerTask" style="display: none;">
+      <input type="text" class ="inputEntry" placeholder="Add your task...">
+      <ul class="tasksList"></ul>
+    </div>
+
+  </div>
+
+
+  <div class="containerPomodoro" id="pomodoro">
     <h1>POMODORO</h1>
-    <div class="containerInput">
-      <div class="inputWork" id="usersInput">
+    <div  id="usersInput" class="containerInput">
+      <div class="inputWork">
         <label class="labelInput" for="workTime">Choissisez l'heure travail (min)
         </label>
         <input class="input1" type="number" id="workTime" min="0" />
@@ -44,6 +56,8 @@
       <button class="buttonEnd" id="buttonEnd" style="display: none">End</button>
     </div>
   </div>
+
+</div>
 </body>
 
 </html>
