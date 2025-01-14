@@ -1,5 +1,7 @@
 import { addTask } from "./js/todo/task.js";
+import { playSound, goToWork, goTobreak } from "./js/pomodoro/sound.js";
 //import { containerTask, inputEntry, add, tasksList } from "./js/todo/variableTodo.js";
+import { containerTask, inputEntry, tasksList, buttonAdd, containerMusicBox, containerInput } from "./js/todo/variableTodo.js";
 
 let workSessionDuration = "";
 let breakDuration = "";
@@ -15,10 +17,6 @@ const musicCheckbox = document.querySelector("#musicCheckbox");
 const audioPlayer = document.querySelector("#audioPlayer");
 const musicBox = document.querySelector("#musicBox")
 
-const containerTask = document.querySelector("#containerTask")
-const inputEntry = document.querySelector(".inputEntry")
-const buttonAdd = document.querySelector("#buttonAdd")
-const tasksList = document.querySelector(".tasksList")
 
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
@@ -35,7 +33,7 @@ const decreaseTime = () => {
   if (time < 0) {
     timeToWork = !timeToWork; // Alterner entre travail et pause
     // time = timeToWork ? workSessionDuration : breakDuration; // Repasser à 10 secondes ou 5 seconde
-    timeToWork ? playSoundWork() : playSoundBreak()
+    timeToWork ? playSound(goTobreak) : playSound(goToWork)
     if (timeToWork) {
       time = workSessionDuration;
       if (musicCheckbox.checked) {
@@ -86,8 +84,8 @@ buttonStart.addEventListener("click", () => {
   startTimer();
   buttonEnd.style.display = "block";
   buttonStart.style.display = "none";
-  usersInput.innerHTML = "";
-  musicBox.innerHTML = ""
+  containerInput.style.display = "none";
+  containerMusicBox.style.display = "none";
   if (timeToWork && musicCheckbox.checked) {
     audioPlayer.play();
   } else {
@@ -105,60 +103,12 @@ function endTimer() {
   timerElement.innerText = ``;
   buttonEnd.style.display = "none";
   buttonStart.style.display = "block";
-  usersInput.innerHTML = `
-    <label for="workTime">Choisissez l'heure travail (min)</label>
-    <input 
-        type="number" 
-        id="workTime"
-        min="0">
-    <label for="breakTime">Choisissez l'heure pause (min)</label>
-    <input 
-        type="number" 
-        id="breakTime"
-        min="0">
-`;
-musicBox.innerHTML= `
-<label>
-  <input type="checkbox" id="musicCheckbox" />
-  Activer la musique
-</label>
-`
+  containerInput.style.display = "block"
+  containerMusicBox.style.display = "block"
   audioPlayer.pause(); // Mettre en pause la musique
   audioPlayer.currentTime = 0;
   
 }
-
-const goTobreak = [
-  '/audios/Audio_giau_pause.mp3',
-  '/audios/Audio_nico_pause.mp3',
-  '/audios/Audio_Raissa_pause.mp3'
-];
-
-const goToWork = [
-  '/audios/Audio_giau_taff.mp3',
-  '/audios/Audio_nico_taff.mp3',
-  '/audios/Audio_Raissa_taff.mp3'
-]
-
-const playSoundBreak = () => {
-
-    const audioIndex = Math.floor(Math.random() * goTobreak.length);
-    const audioPath = chrome.runtime.getURL(goTobreak[audioIndex]);
-    console.log('audio path:', audioPath)
-    const audio = new Audio(audioPath)
-
-    return audio.play()
-}
-
-const playSoundWork = () => {
-  const audioIndex = Math.floor(Math.random() * goToWork.length);
-  const audioPath = chrome.runtime.getURL(goToWork[audioIndex]);
-  console.log('audio path WORK:', audioPath)
-  const audio = new Audio(audioPath)
-
-  return audio.play()
-}
-
 const createTaskInput = () => {
   containerTask.style.display = 'block';
   inputEntry.focus()
