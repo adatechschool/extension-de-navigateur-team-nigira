@@ -6,10 +6,21 @@ body {
     padding: 16px;
     box-sizing: border-box;
 }
+#divBody{
+    height: 600px;
+    width: 500px;
+    border: 2px solid black;
+    /**padding: 10px;**/
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 /** CONTAINER **/
 
-.container {
+.containerPomodoro {
     height: 250px;
     width: 400px;
     border: 2px solid black;
@@ -137,4 +148,43 @@ label {
 
 .labelMusic {
     font-size: 18px;
+}
+
+ul {
+    list-style-type: none;
+  }
+#containerTodo{
+    height: 250px;
+    width: 400px;
+    border: 2px solid black;
+    /**padding: 10px;**/
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#buttonAdd{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.buttonPoubelle img{
+    height: 18px;
+    width: 18px;
+    vertical-align: middle;
+    /*background: url('icons/poubelle.png');*/
+}
+.buttonPoubelle{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }

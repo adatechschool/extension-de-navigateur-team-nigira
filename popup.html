@@ -13,23 +13,22 @@
   <title>test Extension</title>
 </head>
 <body>
-  
-  <div id = "TodoList">
-    <h4>To Do List</h4>
-    <button id = "buttonAdd">ADD</button>
-
-    <div id = "listContainer" style="display: none;">
-    <input type="checkBox" id="listCheckBox">
-    <input id="champsSaisie" type="text" placeholder="Champs Saisie...">
-    <!--<input type="button" name="poubelle" id="iconsPoubelle">-->
-    <button id = "buttonPoubelle"><img src="icons/poubelle.png" alt="iconPoubelle"></button>
+<div id = "divBody">
+  <div id = "containerTodo"> 
+    <h1>TO DO LIST</h1>
+    <button id = "buttonAdd"><img src="icons/boutton_Add.png" alt=""></button>
+    <div id = "containerTask" style="display: none;">
+      <input type="text" class ="inputEntry" placeholder="Add your task...">
+      <ul class="tasksList"></ul>
     </div>
+
   </div>
 
-  <div class="container" id="pomodoro">
+
+  <div class="containerPomodoro" id="pomodoro">
     <h1>POMODORO</h1>
-    <div class="containerInput">
-      <div class="inputWork" id="usersInput">
+    <div  id="usersInput" class="containerInput">
+      <div class="inputWork">
         <label class="labelInput" for="workTime">Choissisez l'heure travail (min)
         </label>
         <input class="input1" type="number" id="workTime" min="0" />
@@ -57,6 +56,8 @@
       <button class="buttonEnd" id="buttonEnd" style="display: none">End</button>
     </div>
   </div>
+
+</div>
 </body>
 
 </html>
