@@ -2,19 +2,19 @@ import { addTask } from "./js/todo/task.js";
 import { containerTask, inputEntry, add, tasksList } from "./js/todo/variableTodo.js";
 import { goToWork, goTobreak, playSound } from "./js/pomodoro/sound.js";
 
-let workSessionDuration = "";
-let breakDuration = "";
 const usersInput = document.querySelector("#usersInput");
-let time = breakDuration;
-let timeToWork = true;
-let workInterval;
 const timerElement = document.querySelector("#timer");
 const buttonStart = document.querySelector("#buttonStart");
 const buttonEnd = document.querySelector("#buttonEnd");
-
 const musicCheckbox = document.querySelector("#musicCheckbox");
 const audioPlayer = document.querySelector("#audioPlayer");
 const musicBox = document.querySelector("#musicBox")
+
+let workSessionDuration = "";
+let breakDuration = "";
+let time = breakDuration;
+let timeToWork = true;
+let workInterval;
 
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
@@ -83,12 +83,12 @@ function endTimer() {
   buttonEnd.style.display = "none";
   buttonStart.style.display = "block";
   usersInput.innerHTML = `
-    <label for="workTime">Choisissez l'heure travail (min)</label>
+    <label for="workTime">Choisissez votre temps de travail</label>
     <input 
         type="number" 
         id="workTime"
         min="0">
-    <label for="breakTime">Choisissez l'heure pause (min)</label>
+    <label for="breakTime">Choisissez votre temps de pause</label>
     <input 
         type="number" 
         id="breakTime"
@@ -102,7 +102,6 @@ musicBox.innerHTML= `
 `
   audioPlayer.pause(); // Mettre en pause la musique
   audioPlayer.currentTime = 0;
-  
 }
 
 const createTaskInput = () => {
@@ -150,8 +149,4 @@ inputEntry.addEventListener('keypress', (e) => {
     containerTask.style.display + 'none'
   }
 });
-
-
-// créer bouton delete
-// créer checkbox
 
