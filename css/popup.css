@@ -142,4 +142,15 @@ label {
 ul {
     list-style-type: none;
   }
+#containerTodo{
+    height: 250px;
+    width: 400px;
+    border: 2px solid black;
+    /**padding: 10px;**/
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
   

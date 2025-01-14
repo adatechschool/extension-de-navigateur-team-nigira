@@ -1,5 +1,5 @@
 import { addTask } from "./js/todo/task.js";
-import { containerTask, inputEntry, add, tasksList } from "./js/todo/variableTodo.js";
+//import { containerTask, inputEntry, add, tasksList } from "./js/todo/variableTodo.js";
 
 let workSessionDuration = "";
 let breakDuration = "";
@@ -15,11 +15,10 @@ const musicCheckbox = document.querySelector("#musicCheckbox");
 const audioPlayer = document.querySelector("#audioPlayer");
 const musicBox = document.querySelector("#musicBox")
 
-// const buttonAdd = document.querySelector("#buttonAdd")
-// const listContainer = document.querySelector("#listContainer")
-// const buttonPoubelle = document.querySelector("#buttonPoubelle")
-// const champsSaisie = document.querySelector("#champsSaisie")
-// const listCheckBox = document.querySelector("#listCheckBox")
+const containerTask = document.querySelector("#containerTask")
+const inputEntry = document.querySelector(".inputEntry")
+const buttonAdd = document.querySelector("#buttonAdd")
+const tasksList = document.querySelector(".tasksList")
 
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
@@ -201,7 +200,7 @@ const createTask = (taskName) => {
 }
 
 
-add.addEventListener('click', createTaskInput);
+buttonAdd.addEventListener('click', createTaskInput);
 
 inputEntry.addEventListener('keypress', (e) => {
   if(e.key === 'Enter' && inputEntry.value !== ''){
