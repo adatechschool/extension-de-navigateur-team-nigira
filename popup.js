@@ -15,11 +15,6 @@ const musicCheckbox = document.querySelector("#musicCheckbox");
 const audioPlayer = document.querySelector("#audioPlayer");
 const musicBox = document.querySelector("#musicBox")
 
-// const buttonAdd = document.querySelector("#buttonAdd")
-// const listContainer = document.querySelector("#listContainer")
-// const buttonPoubelle = document.querySelector("#buttonPoubelle")
-// const champsSaisie = document.querySelector("#champsSaisie")
-// const listCheckBox = document.querySelector("#listCheckBox")
 
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
@@ -183,8 +178,3 @@ inputEntry.addEventListener('keypress', (e) => {
     containerTask.style.display + 'none'
   }
 });
-
-
-// créer bouton delete
-// créer checkbox
-
