@@ -8,6 +8,5 @@ export const addTask = (taskValue) => {
     return task;
     
 }
-
 // console.log(addTask('Faire la vaisselle'));
 // console.log(addTask('Cuire un oeuf'));

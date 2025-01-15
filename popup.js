@@ -1,14 +1,6 @@
 //import { addTask } from "./js/todo/task.js";
 //import { containerTask, inputEntry, add, tasksList } from "./js/todo/variableTodo.js";
 
-const task = [];
-const addTask = (taskValue) => {
-    const userEntry = taskValue;
-    task.push(userEntry)
-    return task;
-}
-
-
 let workSessionDuration = "";
 let breakDuration = "";
 const usersInput = document.querySelector("#usersInput");
@@ -27,7 +19,6 @@ const containerTask = document.querySelector("#containerTask")
 const inputEntry = document.querySelector(".inputEntry")
 const buttonAdd = document.querySelector("#buttonAdd")
 const tasksList = document.querySelector(".tasksList")
-
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
   let minutes = parseInt(time / 60, 10);
@@ -168,6 +159,15 @@ const playSoundWork = () => {
   return audio.play()
 }
 
+const task =  {...localStorage};
+
+
+const addTask = (taskValue) => {
+    const userEntry = taskValue;
+    task.push(userEntry)
+    return task;
+}
+
 const createTaskInput = () => {
   containerTask.style.display = 'block';
   inputEntry.focus()
@@ -214,6 +214,7 @@ const createTask = (taskName) => {
       }
     });
     label.innerHTML = '';
+   
     label.appendChild(input);
     input.focus();
   });
@@ -241,16 +242,36 @@ const createTask = (taskName) => {
   taskIndex++
 }
 
-
-buttonAdd.addEventListener('click', createTaskInput);
+buttonAdd.addEventListener('click', ()=>{
+console.log("JE SUIS CLIQUE")
+const taskStorage = {...localStorage}
+console.log("console local storage", taskStorage)
+console.log("console task list", task)
+console.log(taskStorage(1))
+  createTaskInput()
+  //createTask(localStorage.getItem(inputEntry.value))
+});
 
 inputEntry.addEventListener('keypress', (e) => {
   if(e.key === 'Enter' && inputEntry.value !== ''){
+    //saveTasks()
     localStorage.setItem(taskIndex, inputEntry.value)
     createTask(inputEntry.value);
     inputEntry.value = '';
     containerTask.style.display + 'none'
-    
   }
-  
 });
+
+//function saveTasks () {
+//  let tasks = []
+//  task.querySelectorAll('li').forEach(function(item){
+//    tasks.push(item.textContent.trim())
+//  })
+//  localStorage.setItem('tasks',JSON.stringify(tasks))
+//}
+//function loadTasks (){
+//   const tasks = localStorage.getItem('tasks')
+//   tasks.forEach(createTask)
+//}
+
+// faire function pour recupere localstorage
