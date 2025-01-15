@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-import { goToWork, goTobreak, playSound } from "./js/pomodoro/sound.js";
-import { audioPlayer, buttonEnd, buttonStart, containerInput, containerMusicBox, musicCheckbox, timerElement } from "./js/pomodoro/variable.js";
-import { addTask } from "./js/todo/task.js";
-import { buttonAdd, containerTask, inputEntry,tasksList } from "./js/todo/variableTodo.js";
-import { tempExterieur, inputCity } from "./js/meteo/api.js";
-=======
 //import { addTask } from "./js/todo/task.js";
 import { containerTask, inputEntry, buttonAdd } from "./js/todo/variableTodo.js";
 import {  timerElement, buttonStart, buttonEnd , musicCheckbox, audioPlayer, containerInput, containerMusicBox } from "./js/pomodoro/variable.js";
 import { playSound, goToWork, goTobreak } from "./js/pomodoro/sound.js";
 import { createTask, createTaskInput } from "./js/todo/task.js"
 
->>>>>>> css
 
 let workSessionDuration = "";
 let breakDuration = "";
