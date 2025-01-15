@@ -2,7 +2,6 @@ body {
   /**width: 400px;**/
   /* height: 800px; */
   font-family: Montserrat, "sans-sérif";
-  background-color: #dce9ef;
   margin: 0;
   /* padding: 16px; */
   box-sizing: border-box;
@@ -189,8 +188,14 @@ ul {
   /**padding: 10px;**/
   border-radius: 20px;
   display: flex;
-  justify-content: center;
+  /*justify-content: center;
   align-content: center;
+  text-align: center;*/
+}
+.containerTask{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* BUTTON */
