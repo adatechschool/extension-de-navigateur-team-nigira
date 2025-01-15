@@ -169,3 +169,9 @@ inputEntry.addEventListener('keypress', (e) => {
     containerTask.style.display + 'none'
   }
 });
+
+// DISPLAY 
+
+
+
+

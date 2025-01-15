@@ -1,11 +1,12 @@
-const key = '3ab5893bf586112123155984d53a30dd'
+const apiKey = 'cd093ab592052b071cdee63c68dd7189'
 
-const meteo = async () => {
-    const url =  `https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid={$key}`;
-    const fetchJson = await fetch(url);
-    const result = await fetchJson.json()
+let city = ""
+const getMeteo = async () => {
+  const url = `https://api.weatherstack.com/current?access_key=${apiKey}&query=Paris`
+  const response = await fetch(url);
+  const result = await response.json()
 
-    console.log(result)
-}
+  return result
+};
 
-meteo();
+console.log(getMeteo());
