@@ -1,67 +1,86 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script defer type="module" src="./popup.js"></script>
-  <link rel="stylesheet" href="/css/popup.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-  <title>Nigiara Productivity</title>
-</head>
-<body>
-<div id = "divBody">
-  <div class="Nigiara">
-    <h1>Nigiara Productivity</h1>
-  </div>
-  <div class="containerTodo" id= "containerTodo"> 
-    <div class="containerTitle">
-      <h1>MY TODO</h1>
-    </div>
-    <button id = "buttonAdd"><img class="buttonImg" src="icons/boutton_Add.png" alt=""></button>
-    <div class="" id ="containerTask" style="display: none;">
-      <input type="text" class ="inputEntry" placeholder="Add your task...">
-      <div id="taskListConstainer">
-        <ul class="tasksList"></ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer type="module" src="./popup.js"></script>
+    <link rel="stylesheet" href="/css/popup.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Nigiara Productivity</title>
+  </head>
+  <body>
+    <div id="divBody">
+      <div class="Nigiara">
+        <h1>Nigiara Productivity</h1>
       </div>
-    </div>
-  </div>
-  <div class="containers">
-    <div class="containerPomodoro" id="pomodoro">
-      <h1>POMODORO</h1>
-      <div  id="usersInput" class="containerInput">
-        <div class="inputWork">
-          <label class="labelInput" for="workTime">Choissisez votre temps de travail</label>
-          <input class="input1" type="number" id="workTime" min="0" />
+      <div class="containerTodo" id="containerTodo">
+        <div class="containerTitle">
+          <h1>MY TODO</h1>
         </div>
-        <div class="inputBreak">
-          <label class="labelInput" for="breakTime">Choisissez vos temps de pause</label>
-          <input class="input2" type="number" id="breakTime" min="0" />
+        <button id="buttonAdd">
+          <img class="buttonImg" src="icons/boutton_Add.png" alt="" />
+        </button>
+        <div class="" id="containerTask" style="display: none">
+          <input
+            type="text"
+            class="inputEntry"
+            placeholder="Add your task..."
+          />
+          <div id="taskListConstainer">
+            <ul class="tasksList"></ul>
+          </div>
         </div>
       </div>
-      <div class="containerMusicBox" id="musicBox">
-        <label class="labelMusic" id="labelMusique">
-          <input type="checkbox" id="musicCheckbox" />
-          Activer la musique
-        </label>
-      </div>
-      <div class="containerButtonStart">
-        <button class="start" id="buttonStart">START</button>
-      </div>
-      <audio id="audioPlayer" src="audios/The Most Beautiful & Relaxing Piano Pieces (Vol. 1).mp3"></audio>
-      <div class="containerTimer">
-        <div class="timer" id="timer"></div>
-      </div>
-      <div class="containerButtonEnd">
-        <button class="buttonEnd" id="buttonEnd" style="display: none">End</button>
+      <div class="containers">
+        <div class="containerPomodoro" id="pomodoro">
+          <h1>POMODORO</h1>
+          <div id="usersInput" class="containerInput">
+            <div class="inputWork">
+              <label class="labelInput" for="workTime"
+                >Choissisez votre temps de travail</label
+              >
+              <input class="input1" type="number" id="workTime" min="0" />
+            </div>
+            <div class="inputBreak">
+              <label class="labelInput" for="breakTime"
+                >Choisissez vos temps de pause</label
+              >
+              <input class="input2" type="number" id="breakTime" min="0" />
+            </div>
+          </div>
+          <div class="containerMusicBox" id="musicBox">
+            <label class="labelMusic" id="labelMusique">
+              <input type="checkbox" id="musicCheckbox" />
+              Activer la musique
+            </label>
+          </div>
+          <div class="containerButtonStart">
+            <button class="start" id="buttonStart">START</button>
+          </div>
+          <audio
+            id="audioPlayer"
+            src="audios/The Most Beautiful & Relaxing Piano Pieces (Vol. 1).mp3"
+          ></audio>
+          <div class="containerTimer">
+            <div class="timer" id="timer"></div>
+          </div>
+          <div class="containerButtonEnd">
+            <button class="buttonEnd" id="buttonEnd" style="display: none">
+              End
+            </button>
+          </div>
+        </div>
+        <div class="containerMeteo">
+          <input type="text" id="inputcity" /> Votre Ville
+          <button id="bouton">Entrer</button>
+          <div id="result"></div>
+        </div>
       </div>
     </div>
-  <div class="containerMeteo"></div>
-  </div>
-</div>
-</body>
-
+  </body>
 </html>

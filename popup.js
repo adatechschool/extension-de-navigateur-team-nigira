@@ -1,7 +1,20 @@
+import { goToWork, goTobreak, playSound } from "./js/pomodoro/sound.js";
+import {
+  audioPlayer,
+  buttonEnd,
+  buttonStart,
+  containerInput,
+  containerMusicBox,
+  musicCheckbox,
+  timerElement,
+} from "./js/pomodoro/variable.js";
 import { addTask } from "./js/todo/task.js";
-import { containerTask, inputEntry, tasksList, buttonAdd } from "./js/todo/variableTodo.js";
-import {  timerElement, buttonStart, buttonEnd , musicCheckbox, audioPlayer, containerInput, containerMusicBox } from "./js/pomodoro/variable.js";
-import { playSound, goToWork, goTobreak } from "./js/pomodoro/sound.js";
+import {
+  buttonAdd,
+  containerTask,
+  inputEntry,
+  tasksList,
+} from "./js/todo/variableTodo.js";
 
 let workSessionDuration = "";
 let breakDuration = "";
@@ -23,7 +36,7 @@ const decreaseTime = () => {
 
   if (time < 0) {
     timeToWork = !timeToWork; // Alterner entre travail et pause
-    timeToWork ? playSound(goToWork) : playSound(goTobreak)
+    timeToWork ? playSound(goToWork) : playSound(goTobreak);
     if (timeToWork) {
       time = workSessionDuration;
       if (musicCheckbox.checked) {
@@ -73,105 +86,126 @@ const start = () => {
     audioPlayer.pause();
     audioPlayer.currentTime = 0; //reinitialise la position de la musique au debut de la lécture
   }
-}
+};
 
 function endTimer() {
-  breakDuration = ""
-  workSessionDuration = ""
+  breakDuration = "";
+  workSessionDuration = "";
   clearInterval(workInterval);
   timerElement.innerText = ``;
   buttonEnd.style.display = "none";
   buttonStart.style.display = "block";
   containerInput.style.display = "block";
   containerMusicBox.style.display = "block";
-  audioPlayer.pause(); 
+  audioPlayer.pause();
   audioPlayer.currentTime = 0;
 }
 
 // TODO LIST //
 
 const createTaskInput = () => {
-  containerTask.style.display = 'block';
-  inputEntry.focus()
-}
+  containerTask.style.display = "block";
+  inputEntry.focus();
+};
 
 let taskIndexes = new Set();
 let taskIndex = 1;
 
 const createTask = (taskName) => {
-  addTask(taskName)
+  addTask(taskName);
 
   // création de la tâche
-  const task = document.createElement('li');
-  task.id = `task${taskIndex}`
-  task.classList.add('task');
+  const task = document.createElement("li");
+  task.id = `task${taskIndex}`;
+  task.classList.add("task");
   //task.innerText = taskName
 
-  const checkbox = document.createElement('input');
-  checkbox.type = "checkbox"
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
 
-  const label = document.createElement('label');
-  label.innerText = taskName
+  const label = document.createElement("label");
+  label.innerText = taskName;
 
-  const button = document.createElement('button');
-  button.id = `delete${taskIndex}`
-  button.classList.add("buttonPoubelle")
-  button.innerHTML += `<img src="icons/poubelle.png">`
+  const button = document.createElement("button");
+  button.id = `delete${taskIndex}`;
+  button.classList.add("buttonPoubelle");
+  button.innerHTML += `<img src="icons/poubelle.png">`;
 
-  task.appendChild(checkbox)
-  task.appendChild(label)
-  task.appendChild(button)
+  task.appendChild(checkbox);
+  task.appendChild(label);
+  task.appendChild(button);
 
   // création de l'input lors du doubleClick
-  label.addEventListener('dblclick', () => {
-    const input = document.createElement('input');
-    input.type = 'text';
+  label.addEventListener("dblclick", () => {
+    const input = document.createElement("input");
+    input.type = "text";
     input.value = label.innerText;
 
     // ajouter la tâche avec entrer
-    input.addEventListener('keypress', (event) => {
-      if (event.key === 'Enter') {
+    input.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") {
         label.innerHTML = input.value;
       }
     });
-    label.innerHTML = '';
+    label.innerHTML = "";
     label.appendChild(input);
     input.focus();
   });
 
-  tasksList.appendChild(task)
-  taskIndexes.add(taskIndex)
+  tasksList.appendChild(task);
+  taskIndexes.add(taskIndex);
 
   taskIndexes.forEach((index) => {
-      document.querySelector(`#delete${index}`).addEventListener('click', () => {
-      document.querySelector(`#task${index}`).remove()
-      taskIndexes.delete(index)
+    document.querySelector(`#delete${index}`).addEventListener("click", () => {
+      document.querySelector(`#task${index}`).remove();
+      taskIndexes.delete(index);
     });
   });
 
-  taskIndex++
-}
+  taskIndex++;
+};
 
 //Statut de bouton Start
-document.querySelector("#workTime").addEventListener("change", updateStartButtonState);
-document.querySelector("#breakTime").addEventListener("change", updateStartButtonState);
+document
+  .querySelector("#workTime")
+  .addEventListener("change", updateStartButtonState);
+document
+  .querySelector("#breakTime")
+  .addEventListener("change", updateStartButtonState);
 
 // Evenement lié au bouton start et end
 buttonStart.addEventListener("click", start);
 buttonEnd.addEventListener("click", endTimer);
 
-buttonAdd.addEventListener('click', createTaskInput);
+buttonAdd.addEventListener("click", createTaskInput);
 
-inputEntry.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' && inputEntry.value !== '') {
+inputEntry.addEventListener("keypress", (e) => {
+  if (e.key === "Enter" && inputEntry.value !== "") {
     createTask(inputEntry.value);
-    inputEntry.value = '';
-    containerTask.style.display + 'none'
+    inputEntry.value = "";
+    containerTask.style.display + "none";
   }
 });
 
-// DISPLAY 
+const apiKey = "cd093ab592052b071cdee63c68dd7189";
+let city = "";
+let result = document.querySelector("#result");
 
+const inputCity = document.querySelector("#inputcity");
+const bouton = document.querySelector("#bouton");
 
+bouton.addEventListener("click", () => {
+  city = inputCity.value;
+  tempExterieur();
+});
 
+async function tempExterieur() {
+  const meteoApi = await fetch(
+    `https://api.weatherstack.com/current?access_key=${apiKey}&query=${city}`
+  );
 
+  const data = await meteoApi.json();
+  result.textContent = `A ${data.location.name} il fait ${data.current.temperature}°C,`;
+}
+
+// DISPLAY
