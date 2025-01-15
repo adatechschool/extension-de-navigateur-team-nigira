@@ -25,7 +25,7 @@ const decreaseTime = () => {
 
   if (time < 0) {
     timeToWork = !timeToWork; // Alterner entre travail et pause
-    timeToWork ? playSound(goToWork) : playSound(goTobreak)
+    timeToWork ? playSound(goToWork) : playSound(goTobreak);
     if (timeToWork) {
       time = workSessionDuration;
       if (musicCheckbox.checked) {
@@ -75,18 +75,18 @@ const start = () => {
     audioPlayer.pause();
     audioPlayer.currentTime = 0; //reinitialise la position de la musique au debut de la lécture
   }
-}
+};
 
 function endTimer() {
-  breakDuration = ""
-  workSessionDuration = ""
+  breakDuration = "";
+  workSessionDuration = "";
   clearInterval(workInterval);
   timerElement.innerText = ``;
   buttonEnd.style.display = "none";
   buttonStart.style.display = "block";
   containerInput.style.display = "block";
   containerMusicBox.style.display = "block";
-  audioPlayer.pause(); 
+  audioPlayer.pause();
   audioPlayer.currentTime = 0;
 }
 
@@ -103,13 +103,13 @@ buttonAdd.addEventListener('click', createTaskInput);
 inputEntry.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && inputEntry.value !== '') {
     createTask(inputEntry.value);
-    inputEntry.value = '';
-    containerTask.style.display + 'none'
+    inputEntry.value = "";
+    containerTask.style.display + "none";
   }
 });
 
-// DISPLAY 
-
-
-
-
+// Evenement lié à la météo
+const bouton = document.querySelector("#bouton");
+bouton.addEventListener("click", () => {
+  tempExterieur(inputCity.value);
+});

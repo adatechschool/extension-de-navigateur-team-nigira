@@ -1,12 +1,13 @@
-const apiKey = 'cd093ab592052b071cdee63c68dd7189'
+const apiKey = "cd093ab592052b071cdee63c68dd7189";
+let result = document.querySelector("#result");
 
-let city = ""
-const getMeteo = async () => {
-  const url = `https://api.weatherstack.com/current?access_key=${apiKey}&query=Paris`
-  const response = await fetch(url);
-  const result = await response.json()
+export const inputCity = document.querySelector("#inputcity");
 
-  return result
-};
-
-console.log(getMeteo());
+export async function tempExterieur(city) {
+    const meteoApi = await fetch(
+      `https://api.weatherstack.com/current?access_key=${apiKey}&query=${city}`
+    );
+  
+    const data = await meteoApi.json();
+    result.textContent = `A ${data.location.name} il fait ${data.current.temperature}°C,`;
+  }

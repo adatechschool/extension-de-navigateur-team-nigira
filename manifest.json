@@ -14,7 +14,6 @@
       "js": ["popup.js"]
     }
   ],
-
   "web_accessible_resources": [
     {
       "resources": [
