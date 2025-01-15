@@ -9,5 +9,3 @@ export const addTask = (taskValue) => {
     
 }
 
-// console.log(addTask('Faire la vaisselle'));
-// console.log(addTask('Cuire un oeuf'));

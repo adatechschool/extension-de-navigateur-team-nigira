@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Minimal Manifest",
-  "version": "1.0.0",
-  "description": "Affiche une alerte à chaque ouverture d'onglet.",
+  "name": "Nigiara productivity",
+  "version": "1.0",
+  "description": "Extension de productivité qui réuni un pomodo et une todo-list",
   "permissions": [
     "tabs",
     "activeTab",

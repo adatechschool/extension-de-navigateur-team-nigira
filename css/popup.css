@@ -151,20 +151,49 @@ label {
     font-size: 18px;
 }
 
+/* TODO LIST */
+
 ul {
     list-style-type: none;
-  }
+}
+
+/* CONTAINER */
+
+.containerTitle:first-child {
+    align-self:self-start;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerTitle {
+    background-color: blue;
+}
+
+.tasksList {
+    background-color: red;
+    height: 100%;
+    width: 100%;
+}
+
 #containerTodo{
+    background-color: green;
     height: 250px;
     width: 400px;
     border: 2px solid black;
     /**padding: 10px;**/
     border-radius: 20px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+/* BUTTON */
+
+img.buttonImg {
+    height: 50px;
+    width: 50px;
+}
+
 #buttonAdd{
     background: none;
 	color: inherit;
@@ -174,12 +203,14 @@ ul {
 	cursor: pointer;
 	outline: inherit;
 }
+
 .buttonPoubelle img{
     height: 18px;
     width: 18px;
     vertical-align: middle;
     /*background: url('icons/poubelle.png');*/
 }
+
 .buttonPoubelle{
     background: none;
 	color: inherit;

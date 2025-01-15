@@ -14,7 +14,6 @@ export const playSound = (arrSound) => {
 
     const audioIndex = Math.floor(Math.random() * arrSound.length);
     const audioPath = chrome.runtime.getURL(arrSound[audioIndex]);
-    console.log('audio path:', audioPath)
-    const audio = new Audio(audioPath)
-    audio.play()
+    const audio = new Audio(audioPath);
+    audio.play();
 }
