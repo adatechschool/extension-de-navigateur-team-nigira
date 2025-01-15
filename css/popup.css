@@ -7,7 +7,7 @@ body {
   box-sizing: border-box;
 }
 #divBody {
-  height: 600px;
+  height: 580px;
   width: 500px;
   border: 2px solid black;
   /**padding: 10px;**/
@@ -108,7 +108,11 @@ body {
   font-size: 15px;
   margin: 20px;
 }*/
-
+.inputEntry{
+    padding: 10px;
+    font-size: 13px;
+    margin: 5px;
+}
 .buttonEnd:hover {
   background-color: #bfb5cb;
 }
@@ -204,7 +208,11 @@ ul {
   justify-content: center;
   align-items: left;
 }
-
+#containerTask{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* BUTTON */
 
 img.buttonImg {
