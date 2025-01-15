@@ -1,14 +1,14 @@
 body {
-  /**width: 400px;**/
-  /* height: 800px; */
+  /*width: 400px;
+  height: 800px;*/
   font-family: Montserrat, "sans-sérif";
   margin: 0;
   /* padding: 16px; */
   box-sizing: border-box;
 }
 #divBody {
-  height: 100%;
-  width: 650px;
+  height: 600px;
+  width: 500px;
   border: 2px solid black;
   /**padding: 10px;**/
   border-radius: 20px;
@@ -16,7 +16,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  /*gap: 15px;*/
 }
 
 .Nigiara {
@@ -32,8 +32,8 @@ body {
 /** CONTAINER **/
 
 .containerPomodoro {
-  height: 250px;
-  width: 350px;
+  height: 200px;
+  width: 200px;
   border: 2px solid black;
   /**padding: 10px;**/
   border-radius: 20px;
@@ -45,23 +45,24 @@ body {
 
 /** BUTTON **/
 
-.containerButtonStart {
+.containerButtonStart, .conatainerButtonEnd {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+ 
 }
-.start {
-  height: 60px;
-  width: 250px;
+.start, .buttonEnd{
+  height: 30px;
+  width: 80px;
   border-radius: 15px;
   border: none;
   background-color: #554866;
   cursor: pointer;
   color: white;
-  font-size: 30px;
-  margin: 20px;
+  font-size: 15px;
+  margin: 0px;
 }
 
 .start:hover {
@@ -80,20 +81,23 @@ body {
 }
 
 .timer {
-  font-size: 80px;
+  font-size: 40px;
 }
 .container:nth-child(11) {
   align-self: center;
 }
+#usersInput{
+    text-align: center;
+}
 
 /** BUTTON END **/
 
-.conatainerButtonEnd {
+/*.conatainerButtonEnd {
   height: 100%;
   width: 100%;
-}
+}*/
 
-.buttonEnd {
+/*.buttonEnd {
   height: 60px;
   width: 150px;
   border-radius: 15px;
@@ -101,9 +105,9 @@ body {
   background-color: #554866;
   cursor: pointer;
   color: white;
-  font-size: 30px;
+  font-size: 15px;
   margin: 20px;
-}
+}*/
 
 .buttonEnd:hover {
   background-color: #bfb5cb;
@@ -137,7 +141,7 @@ body {
 }
 
 .labelInput {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 label {
@@ -155,7 +159,7 @@ label {
 }
 
 .labelMusic {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 /* TODO LIST */
@@ -182,20 +186,23 @@ ul {
 }
 
 .containerTodo {
-  height: 300px;
-  width: 600px;
+  height: 240px;
+  width: 400px;
   border: 2px solid black;
   /**padding: 10px;**/
   border-radius: 20px;
-  display: flex;
-  /*justify-content: center;
-  align-content: center;
-  text-align: center;*/
+  /*display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;*/
+  text-align: center;
+  margin-bottom: 10px;
+  position: inherit;
 }
 .containerTask{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: left;
 }
 
 /* BUTTON */
@@ -239,7 +246,7 @@ img.buttonImg {
 #taskListConstainer {
   overflow-y: auto;
   max-height: 80px;
-  text-align: left;
+  text-align: center
 }
 
 ul.taskList {
@@ -255,8 +262,8 @@ ul {
 /* METEO */
 
 .containerMeteo {
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
   border: 2px solid black;
   border-radius: 20px;
 }
