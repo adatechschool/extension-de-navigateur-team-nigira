@@ -5,10 +5,10 @@ const task = [];
 const addTask = (taskValue) => {
     const userEntry = taskValue;
     task.push(userEntry)
-
     return task;
-    
 }
+
+
 let workSessionDuration = "";
 let breakDuration = "";
 const usersInput = document.querySelector("#usersInput");
@@ -186,8 +186,10 @@ const createTask = (taskName) => {
 
   const checkbox = document.createElement('input');
   checkbox.type = "checkbox"
+  checkbox.id = `checkbox${taskIndex}`
 
   const label = document.createElement('label');
+  label.id = `label${taskIndex}`
   label.innerText = taskName
 
   const button = document.createElement('button');
@@ -219,12 +221,23 @@ const createTask = (taskName) => {
   taskIndexes.add(taskIndex)
 
   taskIndexes.forEach((index) => {
+  const checkbox = document.querySelector(`#checkbox${index}`)
+  const label = document.querySelector(`#label${index}`)
+  
     document.querySelector(`#delete${index}`).addEventListener('click', () => {
       document.querySelector(`#task${index}`).remove()
       taskIndexes.delete(index)
+      localStorage.removeItem(index)
     });
-  })
+    checkbox.addEventListener('change',()=>{
+      if (checkbox.checked){
+        label.style.textDecoration = "line-through"
+      } else {
+        label.style.textDecoration = "none"
+      }
+    })
 
+  })
   taskIndex++
 }
 
@@ -233,8 +246,11 @@ buttonAdd.addEventListener('click', createTaskInput);
 
 inputEntry.addEventListener('keypress', (e) => {
   if(e.key === 'Enter' && inputEntry.value !== ''){
+    localStorage.setItem(taskIndex, inputEntry.value)
     createTask(inputEntry.value);
     inputEntry.value = '';
     containerTask.style.display + 'none'
+    
   }
+  
 });
