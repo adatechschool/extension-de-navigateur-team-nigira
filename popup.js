@@ -113,5 +113,3 @@ const bouton = document.querySelector("#bouton");
 bouton.addEventListener("click", () => {
   tempExterieur(inputCity.value);
 });
-
-

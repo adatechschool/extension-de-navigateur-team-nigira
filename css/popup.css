@@ -172,7 +172,6 @@ ul {
 }
 
 .containerTitle {
-  background-color: blue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -184,7 +183,6 @@ ul {
 }
 
 .containerTodo {
-  background-color: red;
   height: 300px;
   width: 600px;
   border: 2px solid black;
