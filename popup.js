@@ -1,20 +1,8 @@
 import { goToWork, goTobreak, playSound } from "./js/pomodoro/sound.js";
-import {
-  audioPlayer,
-  buttonEnd,
-  buttonStart,
-  containerInput,
-  containerMusicBox,
-  musicCheckbox,
-  timerElement,
-} from "./js/pomodoro/variable.js";
+import { audioPlayer, buttonEnd, buttonStart, containerInput, containerMusicBox, musicCheckbox, timerElement } from "./js/pomodoro/variable.js";
 import { addTask } from "./js/todo/task.js";
-import {
-  buttonAdd,
-  containerTask,
-  inputEntry,
-  tasksList,
-} from "./js/todo/variableTodo.js";
+import { buttonAdd, containerTask, inputEntry,tasksList } from "./js/todo/variableTodo.js";
+import { tempExterieur, inputCity } from "./js/meteo/api.js";
 
 let workSessionDuration = "";
 let breakDuration = "";
@@ -166,12 +154,8 @@ const createTask = (taskName) => {
 };
 
 //Statut de bouton Start
-document
-  .querySelector("#workTime")
-  .addEventListener("change", updateStartButtonState);
-document
-  .querySelector("#breakTime")
-  .addEventListener("change", updateStartButtonState);
+document.querySelector("#workTime").addEventListener("change", updateStartButtonState);
+document.querySelector("#breakTime").addEventListener("change", updateStartButtonState);
 
 // Evenement lié au bouton start et end
 buttonStart.addEventListener("click", start);
@@ -187,25 +171,10 @@ inputEntry.addEventListener("keypress", (e) => {
   }
 });
 
-const apiKey = "cd093ab592052b071cdee63c68dd7189";
-let city = "";
-let result = document.querySelector("#result");
-
-const inputCity = document.querySelector("#inputcity");
+// Evenement lié à la météo
 const bouton = document.querySelector("#bouton");
-
 bouton.addEventListener("click", () => {
-  city = inputCity.value;
-  tempExterieur();
+  tempExterieur(inputCity.value);
 });
 
-async function tempExterieur() {
-  const meteoApi = await fetch(
-    `https://api.weatherstack.com/current?access_key=${apiKey}&query=${city}`
-  );
 
-  const data = await meteoApi.json();
-  result.textContent = `A ${data.location.name} il fait ${data.current.temperature}°C,`;
-}
-
-// DISPLAY
