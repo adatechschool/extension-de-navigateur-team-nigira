@@ -1,8 +1,17 @@
+<<<<<<< HEAD
 import { goToWork, goTobreak, playSound } from "./js/pomodoro/sound.js";
 import { audioPlayer, buttonEnd, buttonStart, containerInput, containerMusicBox, musicCheckbox, timerElement } from "./js/pomodoro/variable.js";
 import { addTask } from "./js/todo/task.js";
 import { buttonAdd, containerTask, inputEntry,tasksList } from "./js/todo/variableTodo.js";
 import { tempExterieur, inputCity } from "./js/meteo/api.js";
+=======
+//import { addTask } from "./js/todo/task.js";
+import { containerTask, inputEntry, buttonAdd } from "./js/todo/variableTodo.js";
+import {  timerElement, buttonStart, buttonEnd , musicCheckbox, audioPlayer, containerInput, containerMusicBox } from "./js/pomodoro/variable.js";
+import { playSound, goToWork, goTobreak } from "./js/pomodoro/sound.js";
+import { createTask, createTaskInput } from "./js/todo/task.js"
+
+>>>>>>> css
 
 let workSessionDuration = "";
 let breakDuration = "";
@@ -89,70 +98,6 @@ function endTimer() {
   audioPlayer.currentTime = 0;
 }
 
-// TODO LIST //
-
-const createTaskInput = () => {
-  containerTask.style.display = "block";
-  inputEntry.focus();
-};
-
-let taskIndexes = new Set();
-let taskIndex = 1;
-
-const createTask = (taskName) => {
-  addTask(taskName);
-
-  // création de la tâche
-  const task = document.createElement("li");
-  task.id = `task${taskIndex}`;
-  task.classList.add("task");
-  //task.innerText = taskName
-
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-
-  const label = document.createElement("label");
-  label.innerText = taskName;
-
-  const button = document.createElement("button");
-  button.id = `delete${taskIndex}`;
-  button.classList.add("buttonPoubelle");
-  button.innerHTML += `<img src="icons/poubelle.png">`;
-
-  task.appendChild(checkbox);
-  task.appendChild(label);
-  task.appendChild(button);
-
-  // création de l'input lors du doubleClick
-  label.addEventListener("dblclick", () => {
-    const input = document.createElement("input");
-    input.type = "text";
-    input.value = label.innerText;
-
-    // ajouter la tâche avec entrer
-    input.addEventListener("keypress", (event) => {
-      if (event.key === "Enter") {
-        label.innerHTML = input.value;
-      }
-    });
-    label.innerHTML = "";
-    label.appendChild(input);
-    input.focus();
-  });
-
-  tasksList.appendChild(task);
-  taskIndexes.add(taskIndex);
-
-  taskIndexes.forEach((index) => {
-    document.querySelector(`#delete${index}`).addEventListener("click", () => {
-      document.querySelector(`#task${index}`).remove();
-      taskIndexes.delete(index);
-    });
-  });
-
-  taskIndex++;
-};
-
 //Statut de bouton Start
 document.querySelector("#workTime").addEventListener("change", updateStartButtonState);
 document.querySelector("#breakTime").addEventListener("change", updateStartButtonState);
@@ -161,10 +106,10 @@ document.querySelector("#breakTime").addEventListener("change", updateStartButto
 buttonStart.addEventListener("click", start);
 buttonEnd.addEventListener("click", endTimer);
 
-buttonAdd.addEventListener("click", createTaskInput);
-
-inputEntry.addEventListener("keypress", (e) => {
-  if (e.key === "Enter" && inputEntry.value !== "") {
+// Evenement lié à la todo list 
+buttonAdd.addEventListener('click', createTaskInput);
+inputEntry.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' && inputEntry.value !== '') {
     createTask(inputEntry.value);
     inputEntry.value = "";
     containerTask.style.display + "none";
