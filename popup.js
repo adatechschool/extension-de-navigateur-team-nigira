@@ -99,7 +99,7 @@ buttonStart.addEventListener("click", start);
 buttonEnd.addEventListener("click", endTimer);
 
 // Evenement lié à la todo list 
-buttonAdd.addEventListener('click', createTaskInput);
+//buttonAdd.addEventListener('click', createTaskInput);
 inputEntry.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && inputEntry.value !== '') {
     createTask(inputEntry.value);
@@ -107,6 +107,13 @@ inputEntry.addEventListener('keypress', (e) => {
     containerTask.style.display + "none";
   }
 });
+buttonAdd.addEventListener('click', ()=>{
+  if (inputEntry !== ''){
+  createTask(inputEntry.value);
+  inputEntry.value = "";
+  containerTask.style.display + "none";
+}
+})
 
 // Evenement lié à la météo
 const bouton = document.querySelector("#bouton");
