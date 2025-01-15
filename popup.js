@@ -1,6 +1,14 @@
-import { addTask } from "./js/todo/task.js";
+//import { addTask } from "./js/todo/task.js";
 //import { containerTask, inputEntry, add, tasksList } from "./js/todo/variableTodo.js";
 
+const task = [];
+const addTask = (taskValue) => {
+    const userEntry = taskValue;
+    task.push(userEntry)
+
+    return task;
+    
+}
 let workSessionDuration = "";
 let breakDuration = "";
 const usersInput = document.querySelector("#usersInput");
@@ -117,6 +125,7 @@ function endTimer() {
         id="breakTime"
         min="0">
 `;
+
 musicBox.innerHTML= `
 <label>
   <input type="checkbox" id="musicCheckbox" />
