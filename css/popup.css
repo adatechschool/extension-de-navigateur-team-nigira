@@ -1,19 +1,33 @@
+
+
 body {
     /**width: 400px;**/
+    /* height: 800px; */
     font-family: Montserrat, 'sans-sérif';
-    background-color: white;
+    background-color: #dce9ef;
     margin: 0 ;
-    padding: 16px;
+    /* padding: 16px; */
     box-sizing: border-box;
 }
 #divBody{
-    height: 600px;
-    width: 500px;
+    height: 100%;
+    width: 650px;
     border: 2px solid black;
     /**padding: 10px;**/
     border-radius: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.Nigiara {
+    height: 60px;
+    width: 400px;
+    border: 2px solid;
+    border-radius: 15px;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -22,7 +36,7 @@ body {
 
 .containerPomodoro {
     height: 250px;
-    width: 400px;
+    width: 350px;
     border: 2px solid black;
     /**padding: 10px;**/
     border-radius: 20px;
@@ -80,7 +94,6 @@ body {
 /** BUTTON END **/
 
 .conatainerButtonEnd {
-    background-color: red;
     height: 100%;
     width: 100%;
 }
@@ -150,23 +163,49 @@ label {
     font-size: 18px;
 }
 
+/* TODO LIST */
+
 ul {
     list-style-type: none;
-  }
-#containerTodo{
-    height: 250px;
-    width: 400px;
+}
+
+/* CONTAINER */
+
+.containerTitle:first-child {
+    align-self: flex-start;
+}
+
+.containerTitle {
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tasksList {
+    height: 100%;
+    width: 100%;
+}
+
+.containerTodo{
+    background-color: red;
+    height: 300px;
+    width: 600PX;
     border: 2px solid black;
     /**padding: 10px;**/
     border-radius: 20px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align:center;
-    margin-bottom: 10px;
-    position: inherit;
+    align-content: center; 
 }
+
+/* BUTTON */
+
+img.buttonImg {
+    height: 50px;
+    width: 50px;
+}
+
 #buttonAdd{
     background: none;
 	color: inherit;
@@ -180,12 +219,14 @@ ul {
     height: 50px;
     width: 50px;
 }
+
 .buttonPoubelle img{
     height: 18px;
     width: 18px;
     vertical-align: middle;
     /*background: url('icons/poubelle.png');*/
 }
+
 .buttonPoubelle{
     background: none;
 	color: inherit;
@@ -212,3 +253,17 @@ ul{
     padding-inline-start: 0px;
 }
 
+/* METEO */
+
+.containerMeteo {
+    height: 250px;
+    width: 250px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.containers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}

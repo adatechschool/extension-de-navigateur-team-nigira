@@ -1,5 +1,7 @@
-//import { addTask } from "./js/todo/task.js";
-//import { containerTask, inputEntry, add, tasksList } from "./js/todo/variableTodo.js";
+import { addTask } from "./js/todo/task.js";
+import { containerTask, inputEntry, tasksList, buttonAdd } from "./js/todo/variableTodo.js";
+import {  timerElement, buttonStart, buttonEnd , musicCheckbox, audioPlayer, containerInput, containerMusicBox } from "./js/pomodoro/variable.js";
+import { playSound, goToWork, goTobreak } from "./js/pomodoro/sound.js";
 
 const task = [];
 const addTask = (taskValue) => {
@@ -11,22 +13,9 @@ const addTask = (taskValue) => {
 }
 let workSessionDuration = "";
 let breakDuration = "";
-const usersInput = document.querySelector("#usersInput");
 let time = breakDuration;
 let timeToWork = true;
 let workInterval;
-const timerElement = document.querySelector("#timer");
-const buttonStart = document.querySelector("#buttonStart");
-const buttonEnd = document.querySelector("#buttonEnd");
-
-const musicCheckbox = document.querySelector("#musicCheckbox");
-const audioPlayer = document.querySelector("#audioPlayer");
-const musicBox = document.querySelector("#musicBox")
-
-const containerTask = document.querySelector("#containerTask")
-const inputEntry = document.querySelector(".inputEntry")
-const buttonAdd = document.querySelector("#buttonAdd")
-const tasksList = document.querySelector(".tasksList")
 
 const decreaseTime = () => {
   // Obtenir les minutes et les secondes
@@ -39,11 +28,10 @@ const decreaseTime = () => {
 
   timerElement.innerText = `${minutes}:${seconds}`;
   time--;
-  //a voir pour alterner les Audio de RAISSA
+
   if (time < 0) {
     timeToWork = !timeToWork; // Alterner entre travail et pause
-    // time = timeToWork ? workSessionDuration : breakDuration; // Repasser à 10 secondes ou 5 seconde
-    timeToWork ? playSoundWork() : playSoundBreak()
+    timeToWork ? playSound(goToWork) : playSound(goTobreak)
     if (timeToWork) {
       time = workSessionDuration;
       if (musicCheckbox.checked) {
@@ -57,7 +45,8 @@ const decreaseTime = () => {
   }
 };
 
-const startTimer = () => { 
+// Démarrer le minuteur du pomodoro
+const startTimer = () => {
   clearInterval(workInterval);
   timeToWork = true;
   time = workSessionDuration;
@@ -68,14 +57,6 @@ const startTimer = () => {
   workInterval = setInterval(decreaseTime, 1000);
 };
 
-//Statut de bouton Start
-document.querySelector("#workTime").addEventListener("change", () => {
-  updateStartButtonState()
-})
-document.querySelector("#breakTime").addEventListener("change", () => {
-  updateStartButtonState()
-})
-
 function updateStartButtonState() {
   workSessionDuration = document.querySelector("#workTime").value;
   breakDuration = document.querySelector("#breakTime").value;
@@ -85,26 +66,22 @@ function updateStartButtonState() {
     buttonStart.disabled = false;
   }
 }
-updateStartButtonState()
 
-// Démarrer automatiquement au chargement
-buttonStart.addEventListener("click", () => {
+const start = () => {
   workSessionDuration = document.querySelector("#workTime").value;
   breakDuration = document.querySelector("#breakTime").value;
   startTimer();
   buttonEnd.style.display = "block";
   buttonStart.style.display = "none";
-  usersInput.innerHTML = "";
-  musicBox.innerHTML = ""
+  containerInput.style.display = "none";
+  containerMusicBox.style.display = "none";
   if (timeToWork && musicCheckbox.checked) {
     audioPlayer.play();
   } else {
     audioPlayer.pause();
-    audioPlayer.currentTime = 0; //reinitialise la position de la misique au debut de la lécture
+    audioPlayer.currentTime = 0; //reinitialise la position de la musique au debut de la lécture
   }
-});
-
-buttonEnd.addEventListener("click", endTimer);
+}
 
 function endTimer() {
   breakDuration = ""
@@ -113,68 +90,22 @@ function endTimer() {
   timerElement.innerText = ``;
   buttonEnd.style.display = "none";
   buttonStart.style.display = "block";
-  usersInput.innerHTML = `
-    <label for="workTime">Choisissez l'heure travail (min)</label>
-    <input 
-        type="number" 
-        id="workTime"
-        min="0">
-    <label for="breakTime">Choisissez l'heure pause (min)</label>
-    <input 
-        type="number" 
-        id="breakTime"
-        min="0">
-`;
-
-musicBox.innerHTML= `
-<label>
-  <input type="checkbox" id="musicCheckbox" />
-  Activer la musique
-</label>
-`
-  audioPlayer.pause(); // Mettre en pause la musique
+  containerInput.style.display = "block";
+  containerMusicBox.style.display = "block";
+  audioPlayer.pause(); 
   audioPlayer.currentTime = 0;
-  
 }
 
-const goTobreak = [
-  '/audios/Audio_giau_pause.mp3',
-  '/audios/Audio_nico_pause.mp3',
-  '/audios/Audio_Raissa_pause.mp3'
-];
-
-const goToWork = [
-  '/audios/Audio_giau_taff.mp3',
-  '/audios/Audio_nico_taff.mp3',
-  '/audios/Audio_Raissa_taff.mp3'
-]
-
-const playSoundBreak = () => {
-
-    const audioIndex = Math.floor(Math.random() * goTobreak.length);
-    const audioPath = chrome.runtime.getURL(goTobreak[audioIndex]);
-    console.log('audio path:', audioPath)
-    const audio = new Audio(audioPath)
-
-    return audio.play()
-}
-
-const playSoundWork = () => {
-  const audioIndex = Math.floor(Math.random() * goToWork.length);
-  const audioPath = chrome.runtime.getURL(goToWork[audioIndex]);
-  console.log('audio path WORK:', audioPath)
-  const audio = new Audio(audioPath)
-
-  return audio.play()
-}
+// TODO LIST //
 
 const createTaskInput = () => {
   containerTask.style.display = 'block';
   inputEntry.focus()
 }
 
-let taskIndexes = new Set()
-let taskIndex = 1
+let taskIndexes = new Set();
+let taskIndex = 1;
+
 const createTask = (taskName) => {
   addTask(taskName)
 
@@ -207,7 +138,7 @@ const createTask = (taskName) => {
 
     // ajouter la tâche avec entrer
     input.addEventListener('keypress', (event) => {
-      if(event.key === 'Enter'){
+      if (event.key === 'Enter') {
         label.innerHTML = input.value;
       }
     });
@@ -215,26 +146,40 @@ const createTask = (taskName) => {
     label.appendChild(input);
     input.focus();
   });
+
   tasksList.appendChild(task)
   taskIndexes.add(taskIndex)
 
   taskIndexes.forEach((index) => {
-    document.querySelector(`#delete${index}`).addEventListener('click', () => {
+      document.querySelector(`#delete${index}`).addEventListener('click', () => {
       document.querySelector(`#task${index}`).remove()
       taskIndexes.delete(index)
     });
-  })
+  });
 
   taskIndex++
 }
 
+//Statut de bouton Start
+document.querySelector("#workTime").addEventListener("change", updateStartButtonState);
+document.querySelector("#breakTime").addEventListener("change", updateStartButtonState);
+
+// Evenement lié au bouton start et end
+buttonStart.addEventListener("click", start);
+buttonEnd.addEventListener("click", endTimer);
 
 buttonAdd.addEventListener('click', createTaskInput);
 
 inputEntry.addEventListener('keypress', (e) => {
-  if(e.key === 'Enter' && inputEntry.value !== ''){
+  if (e.key === 'Enter' && inputEntry.value !== '') {
     createTask(inputEntry.value);
     inputEntry.value = '';
     containerTask.style.display + 'none'
   }
 });
+
+// DISPLAY 
+
+
+
+
