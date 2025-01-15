@@ -147,7 +147,9 @@ body {
 label {
   margin-right: 10px;
 }
-
+.titre{
+    margin-bottom: 50px;
+}
 /** CONTAINER BOX **/
 
 .containerMusicBox {
@@ -180,9 +182,13 @@ ul {
   align-items: center;
 }
 
-.tasksList {
-  height: 100%;
-  width: 100%;
+/*.tasksList {
+  font-size: 15px;
+}*/
+li{
+    font-family: Georgia, serif;
+    font-size: 20px;
+    margin: 5px;
 }
 
 .containerTodo {
@@ -220,6 +226,7 @@ img.buttonImg {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+  vertical-align: middle;
 }
 #buttonAdd img {
   height: 50px;
@@ -258,6 +265,13 @@ ul.taskList {
 ul {
   padding-inline-start: 0px;
 }
+.inputEntry{
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px;
+    font-family: Georgia, serif;
+    font-size: 16px;
+}
 
 /* METEO */
 
@@ -282,4 +296,8 @@ ul {
 }
 
 #bouton {
+}
+
+#taskInputContainer {
+    text-align: center;
 }
