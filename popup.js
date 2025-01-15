@@ -3,14 +3,6 @@ import { containerTask, inputEntry, tasksList, buttonAdd } from "./js/todo/varia
 import {  timerElement, buttonStart, buttonEnd , musicCheckbox, audioPlayer, containerInput, containerMusicBox } from "./js/pomodoro/variable.js";
 import { playSound, goToWork, goTobreak } from "./js/pomodoro/sound.js";
 
-const task = [];
-const addTask = (taskValue) => {
-    const userEntry = taskValue;
-    task.push(userEntry)
-
-    return task;
-    
-}
 let workSessionDuration = "";
 let breakDuration = "";
 let time = breakDuration;
