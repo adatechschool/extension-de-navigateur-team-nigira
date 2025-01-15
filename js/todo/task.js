@@ -8,7 +8,6 @@ export const addTask = (taskValue) => {
     task.push(userEntry)
 
     return task;
-    
 }
 
 export const createTaskInput = () => {

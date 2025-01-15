@@ -1,9 +1,10 @@
 //import { addTask } from "./js/todo/task.js";
-import { containerTask, inputEntry, buttonAdd } from "./js/todo/variableTodo.js";
-import {  timerElement, buttonStart, buttonEnd , musicCheckbox, audioPlayer, containerInput, containerMusicBox } from "./js/pomodoro/variable.js";
+import { inputEntry, buttonAdd } from "./js/todo/variableTodo.js";
+import { timerElement, buttonStart, buttonEnd , musicCheckbox, audioPlayer, containerInput, containerMusicBox } from "./js/pomodoro/variable.js";
 import { playSound, goToWork, goTobreak } from "./js/pomodoro/sound.js";
-import { createTask, createTaskInput } from "./js/todo/task.js"
-
+import { createTaskInput } from "./js/todo/task.js";
+import { handlePress } from "./js/todo/handle.js";
+import { tempExterieur, inputCity } from "./js/meteo/api.js";
 
 let workSessionDuration = "";
 let breakDuration = "";
@@ -100,16 +101,10 @@ buttonEnd.addEventListener("click", endTimer);
 
 // Evenement lié à la todo list 
 buttonAdd.addEventListener('click', createTaskInput);
-inputEntry.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' && inputEntry.value !== '') {
-    createTask(inputEntry.value);
-    inputEntry.value = "";
-    containerTask.style.display + "none";
-  }
-});
+inputEntry.addEventListener('keypress', handlePress);
 
 // Evenement lié à la météo
 const bouton = document.querySelector("#bouton");
 bouton.addEventListener("click", () => {
-  tempExterieur(inputCity.value);
+  tempExterieur(inputCity.value)
 });
