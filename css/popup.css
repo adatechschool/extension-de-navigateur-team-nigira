@@ -1,0 +1,358 @@
+body {
+  font-family: Montserrat, "sans-sérif";
+  margin: 0;
+  box-sizing: border-box;
+}
+#divBody {
+  background: linear-gradient(#e9defa, #fbfcdb);
+  height: 600px;
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.379);
+}
+
+.Nigiara {
+  height: 60px;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid black; */
+  /* border-radius: 15px; */
+  /* box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.379); */
+}
+
+/** CONTAINER **/
+
+.titlePomodoro {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 100%;
+}
+
+.containerPomodoro {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.379);
+}
+
+/** BUTTON **/
+.start {
+  margin-top: 10px;
+}
+
+.start,
+.buttonEnd {
+  height: 30px;
+  width: 80px;
+  border-radius: 15px;
+  border: none;
+  background-color: #554866;
+  cursor: pointer;
+  color: white;
+  font-size: 15px;
+}
+
+.start:hover {
+  background-color: #bfb5cb;
+}
+
+/** TIMER **/
+
+.containerTimer {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.timer {
+  font-size: 40px;
+}
+.container:nth-child(11) {
+  align-self: center;
+}
+#usersInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/** BUTTON END **/
+
+/* .conatainerButtonEnd {
+  height: 100%;
+  width: 100%;
+} */
+
+/*.buttonEnd {
+  height: 60px;
+  width: 150px;
+  border-radius: 15px;
+  border: none;
+  background-color: #554866;
+  cursor: pointer;
+  color: white;
+  font-size: 15px;
+  margin: 20px;
+}*/
+.inputEntry {
+  padding: 10px;
+  font-size: 13px;
+  margin: 5px;
+}
+.buttonEnd:hover {
+  background-color: #bfb5cb;
+}
+
+/** INPUT **/
+
+.containerInput {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.input1,
+.input2 {
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+.labelInput {
+  font-size: 16px;
+}
+
+label {
+  margin-right: 10px;
+}
+.titre {
+  margin-bottom: 50px;
+}
+/** CONTAINER BOX **/
+
+.containerMusicBox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.labelMusic {
+  font-size: 16px;
+}
+
+/* TODO LIST */
+
+ul {
+  list-style-type: none;
+}
+
+/* CONTAINER */
+
+.containerTitle:first-child {
+  align-self: flex-start;
+}
+
+.containerTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*.tasksList {
+  font-size: 15px;
+}*/
+li {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.containerTodo {
+  height: 240px;
+  width: 408px;
+  border: 2px solid black;
+  /**padding: 10px;**/
+  border-radius: 20px;
+  background-image: url("../icons/backgroundTodo.png");
+  text-align: center;
+  margin-bottom: 10px;
+  position: inherit;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.379);
+}
+.containerTask {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+}
+#containerTask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#taskListConstainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+#taskListConstainer::-webkit-scrollbar-track {
+  background: transparent;
+  border-bottom-right-radius: 15px;
+}
+
+#taskListConstainer::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: 3px solid transparent;
+}
+
+/* BUTTON */
+
+img.buttonImg {
+  height: 50px;
+  width: 50px;
+}
+
+#buttonAdd {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  vertical-align: middle;
+}
+#buttonAdd img {
+  height: 50px;
+  width: 50px;
+}
+
+.buttonPoubelle img {
+  height: 18px;
+  width: 18px;
+  vertical-align: middle;
+  /*background: url('icons/poubelle.png');*/
+}
+
+.buttonPoubelle {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  margin-left: auto;
+}
+
+#taskListConstainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  overflow-y: auto;
+  max-height: 80px;
+  text-align: center;
+}
+
+ul.taskList {
+  /*width: 4OOpx;*/
+  /*display: grid;
+  grid-template-columns: 1fr 1fr 1fr;*/
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+ul {
+  padding-inline-start: 0px;
+}
+.inputEntry {
+  padding: 10px;
+  font-size: 16px;
+  margin: 5px;
+  font-family: Georgia, serif;
+  font-size: 16px;
+}
+
+/* METEO */
+
+#containerMeteo {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.379);
+}
+
+.containers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.containerMeteo {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.379);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#bouton {
+  height: 30px;
+  width: 80px;
+  border-radius: 15px;
+  border: none;
+  background-color: #554866;
+  cursor: pointer;
+  color: white;
+  font-size: 15px;
+}
+
+/* Grid layout */
+/* .containers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+} */

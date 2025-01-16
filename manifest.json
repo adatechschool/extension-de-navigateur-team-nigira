@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Nigiara productivity",
+  "version": "1.0",
+  "description": "Extension de productivité qui réuni un pomodo et une todo-list",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["popup.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+      "/audios/Audio_giau_pause.mp3",
+      "/audios/Audio_nico_pause.mp3",
+      "/audios/Audio_Raissa_pause.mp3",
+      "/audios/Audio_giau_taff.mp3",
+      "/audios/Audio_nico_taff.mp3",
+      "/audios/Audio_Raissa_taff.mp3"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "defaut_icon": {
+      "16": "icons/logoExtension.png",
+      "48": "icons/logoExtension.png",
+      "128": "icons/logoExtension.png"
+    },
+    "default_title": "Ouvrir une alerte"
+  },
+  "icons": {
+    "16": "icons/logoExtension.png",
+    "48": "icons/logoExtension.png",
+    "128": "icons/logoExtension.png"
+  }
+}
