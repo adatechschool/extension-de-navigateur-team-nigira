@@ -4,7 +4,7 @@ body {
   box-sizing: border-box;
 }
 #divBody {
-  background: linear-gradient(#74ebd5, #9face6);
+  background: linear-gradient(#e9defa, #fbfcdb);
   height: 600px;
   width: 500px;
   border: 2px solid black;
