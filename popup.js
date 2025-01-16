@@ -1,7 +1,10 @@
-import {  timerElement, buttonStart, buttonEnd , musicCheckbox, audioPlayer, containerInput, containerMusicBox } from "./js/pomodoro/variable.js";
+//import { addTask } from "./js/todo/task.js";
+import { inputEntry, buttonAdd } from "./js/todo/variableTodo.js";
+import { timerElement, buttonStart, buttonEnd , musicCheckbox, audioPlayer, containerInput, containerMusicBox } from "./js/pomodoro/variable.js";
 import { playSound, goToWork, goTobreak } from "./js/pomodoro/sound.js";
+import { createTaskInput } from "./js/todo/task.js";
+import { handlePress } from "./js/todo/handle.js";
 import { tempExterieur, inputCity } from "./js/meteo/api.js";
-
 
 let workSessionDuration = "";
 let breakDuration = "";
@@ -96,9 +99,12 @@ document.querySelector("#breakTime").addEventListener("change", updateStartButto
 buttonStart.addEventListener("click", start);
 buttonEnd.addEventListener("click", endTimer);
 
+// Evenement lié à la todo list 
+buttonAdd.addEventListener('click', createTaskInput);
+inputEntry.addEventListener('keypress', handlePress);
 
 // Evenement lié à la météo
 const bouton = document.querySelector("#bouton");
 bouton.addEventListener("click", () => {
-  tempExterieur(inputCity.value);
+  tempExterieur(inputCity.value)
 });
