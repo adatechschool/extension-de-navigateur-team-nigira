@@ -224,6 +224,23 @@ li{
     justify-content: center;
     align-items: center;
 }
+
+#taskListConstainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+#taskListConstainer::-webkit-scrollbar-track {
+  background: transparent;
+  border-bottom-right-radius: 15px;
+}
+
+#taskListConstainer::-webkit-scrollbar-thumb { 
+  background-color: rgba(0, 0, 0, 0.5);  
+  border-radius: 10px; 
+  border: 3px solid transparent; 
+}
+
+
 /* BUTTON */
 
 img.buttonImg {
@@ -261,6 +278,7 @@ img.buttonImg {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+  margin-left: auto;
 }
 
 #taskListConstainer {
