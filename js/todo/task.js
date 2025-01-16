@@ -32,6 +32,7 @@ export const createTask = (taskName) => {
   
     const checkbox = document.createElement('input');
     checkbox.type = "checkbox"
+    checkbox.classList.add('checkbox')
   
     const label = document.createElement('label');
     label.innerText = taskName
