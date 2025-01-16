@@ -17,6 +17,8 @@ export const createTaskInput = () => {
 }
 
 let taskIndexes = new Set();
+
+
 let taskIndex = 1;
 
 export const createTask = (taskName) => {
@@ -67,9 +69,44 @@ export const createTask = (taskName) => {
         document.querySelector(`#delete${index}`).addEventListener('click', () => {
         document.querySelector(`#task${index}`).remove()
         taskIndexes.delete(index)
+        localStorage.removeItem(index)
       });
     });
+    checkbox.addEventListener('change',()=>{
+      if (checkbox.checked){
+        label.style.textDecoration = "line-through"
+      } else {
+        label.style.textDecoration = "none"
+      }
+    })
   
     taskIndex++
   }
-
+  inputEntry.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && inputEntry.value !== '') {
+      localStorage.setItem(taskIndex, inputEntry.value)
+      createTask(inputEntry.value);
+      inputEntry.value = "";
+      containerTask.style.display + "none";
+    }
+  });
+  
+  buttonAdd.addEventListener('click', ()=>{
+    if (inputEntry.value !== ''){
+    localStorage.setItem(taskIndex, inputEntry.value)
+    createTask(inputEntry.value);
+    inputEntry.value = "";
+    containerTask.style.display + "none";
+  } else {}
+  })
+  
+  let array = new Array()
+  for (let i = 0; i < localStorage.length; i++) {
+    array[i] = localStorage.getItem(localStorage.key(i))
+    //createTask(localStorage.getItem(localStorage.key(i)))
+  }
+  localStorage.clear()
+  array.forEach((taskName) => {
+    localStorage.setItem(taskIndex, taskName)
+    createTask(taskName)
+  });

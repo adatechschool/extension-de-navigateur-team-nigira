@@ -151,7 +151,9 @@ body {
 label {
   margin-right: 10px;
 }
-
+.titre{
+    margin-bottom: 50px;
+}
 /** CONTAINER BOX **/
 
 .containerMusicBox {
@@ -184,9 +186,13 @@ ul {
   align-items: center;
 }
 
-.tasksList {
-  height: 100%;
-  width: 100%;
+/*.tasksList {
+  font-size: 15px;
+}*/
+li{
+    font-family: Georgia, serif;
+    font-size: 20px;
+    margin: 5px;
 }
 
 .containerTodo {
@@ -195,10 +201,7 @@ ul {
   border: 2px solid black;
   /**padding: 10px;**/
   border-radius: 20px;
-  /*display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;*/
+  background-image: url('../icons/backgroundTodo.png');
   text-align: center;
   margin-bottom: 10px;
   position: inherit;
@@ -228,6 +231,7 @@ img.buttonImg {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+  vertical-align: middle;
 }
 #buttonAdd img {
   height: 50px;
@@ -266,6 +270,13 @@ ul.taskList {
 ul {
   padding-inline-start: 0px;
 }
+.inputEntry{
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px;
+    font-family: Georgia, serif;
+    font-size: 16px;
+}
 
 /* METEO */
 
@@ -290,4 +301,8 @@ ul {
 }
 
 #bouton {
+}
+
+#taskInputContainer {
+    text-align: center;
 }
