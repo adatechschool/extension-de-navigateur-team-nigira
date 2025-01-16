@@ -197,10 +197,7 @@ li{
   border: 2px solid black;
   /**padding: 10px;**/
   border-radius: 20px;
-  /*display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;*/
+  background-image: url('../icons/backgroundTodo.png');
   text-align: center;
   margin-bottom: 10px;
   position: inherit;
