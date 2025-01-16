@@ -198,7 +198,7 @@ ul {
 }*/
 li{
     font-family: Georgia, serif;
-    font-size: 20px;
+    font-size: 22px;
     margin: 5px;
 }
 
@@ -282,13 +282,20 @@ img.buttonImg {
 }
 
 #taskListConstainer {
+display: flex;
+justify-content: center;
+align-items: center;
+  width: 400px;
   overflow-y: auto;
   max-height: 80px;
-  text-align: center
+  /*text-align: center*/
+  
 }
 
 ul.taskList {
-  display: flex;
+  /*width: 4OOpx;*/
+  /*display: grid;
+  grid-template-columns: 1fr 1fr 1fr;*/
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -297,11 +304,31 @@ ul {
   padding-inline-start: 0px;
 }
 .inputEntry{
+    font-family: Georgia, serif;;
     padding: 10px;
-    font-size: 16px;
+    font-size: 20px;
     margin: 5px;
     font-family: Georgia, serif;
     font-size: 16px;
+    border-color: #554866;
+    border-radius: 5px;
+}
+.buttonPoubelle{
+    height: 20px;
+    width: 20px;
+}
+.buttonPoubelle img {
+    height: 25px;
+    width: 25px;
+}
+.checkbox{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+
+}
+label{
+    vertical-align: middle;
 }
 
 /* METEO */
@@ -320,6 +347,7 @@ ul {
   gap: 8px;
   
 }
+
 
 .containerMeteo {
 }
